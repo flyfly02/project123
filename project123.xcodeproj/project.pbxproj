@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		907D5B502F0A3E1100ABBFAC /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 907D5B4F2F0A3E1100ABBFAC /* Nunito-SemiBold.ttf */; };
 		909039242F09379600388B42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909039232F09379600388B42 /* AppDelegate.swift */; };
 		909039262F09379600388B42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909039252F09379600388B42 /* SceneDelegate.swift */; };
 		909039282F09379600388B42 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909039272F09379600388B42 /* StartViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		907D5B4F2F0A3E1100ABBFAC /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		909039202F09379600388B42 /* project123.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project123.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		909039232F09379600388B42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		909039252F09379600388B42 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		907D5B4B2F0A2C2100ABBFAC /* System */ = {
+			isa = PBXGroup;
+			children = (
+				909039252F09379600388B42 /* SceneDelegate.swift */,
+				909039232F09379600388B42 /* AppDelegate.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		907D5B4C2F0A2C5000ABBFAC /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9090392C2F09379600388B42 /* project123.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		907D5B4D2F0A2C6C00ABBFAC /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				907D5B4E2F0A2C7300ABBFAC /* StartScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		907D5B4E2F0A2C7300ABBFAC /* StartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				909039272F09379600388B42 /* StartViewController.swift */,
+			);
+			path = StartScreen;
+			sourceTree = "<group>";
+		};
 		909039172F09379600388B42 = {
 			isa = PBXGroup;
 			children = (
@@ -60,12 +95,11 @@
 		909039222F09379600388B42 /* project123 */ = {
 			isa = PBXGroup;
 			children = (
+				907D5B4D2F0A2C6C00ABBFAC /* Screens */,
+				907D5B4C2F0A2C5000ABBFAC /* CoreData */,
+				907D5B4B2F0A2C2100ABBFAC /* System */,
 				9090393A2F09511400388B42 /* Assets */,
-				909039232F09379600388B42 /* AppDelegate.swift */,
-				909039252F09379600388B42 /* SceneDelegate.swift */,
-				909039272F09379600388B42 /* StartViewController.swift */,
 				909039342F09379700388B42 /* Info.plist */,
-				9090392C2F09379600388B42 /* project123.xcdatamodeld */,
 			);
 			path = project123;
 			sourceTree = "<group>";
@@ -91,6 +125,7 @@
 		9090393E2F0954DD00388B42 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				907D5B4F2F0A3E1100ABBFAC /* Nunito-SemiBold.ttf */,
 				9090394D2F09656E00388B42 /* Nunito-ExtraBold.ttf */,
 				909039472F095FE500388B42 /* FontProvider.swift */,
 			);
@@ -155,6 +190,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				907D5B502F0A3E1100ABBFAC /* Nunito-SemiBold.ttf in Resources */,
 				9090394E2F09656E00388B42 /* Nunito-ExtraBold.ttf in Resources */,
 				909039302F09379700388B42 /* Assets.xcassets in Resources */,
 			);

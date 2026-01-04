@@ -11,7 +11,12 @@ import UIKit
 
 
 extension UIFont {
-    static func nunito(size: CGFloat = 14) -> UIFont? {
+    static func nunitoExtraBold(size: CGFloat = 14) -> UIFont? {
         .init(name: "Nunito-ExtraBold", size: size)
     }
+    
+    static func nunitoSemiBold(size: CGFloat = 14) -> UIFont? {
+        .init(name: "Nunito-SemiBold", size: size)
+    }
 }
+
