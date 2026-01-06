@@ -11,6 +11,7 @@ class StartViewController: UIViewController {
     
     private let addPlayer = "Add player"
     private var players: [String] = ["mike", "anna", "polly"]
+    private var tableHeightConstraint: NSLayoutConstraint!
     
     private lazy var titletext: UILabel = {
         let title = UILabel()
@@ -29,11 +30,10 @@ class StartViewController: UIViewController {
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.layer.cornerRadius = 15
         table.layer.masksToBounds  = true
+        table.separatorColor = .clear
         table.backgroundColor = .appBackBlack
-        table.separatorColor = .appSeparatorTable
+        table.tintColor = .systemBlue
         table.translatesAutoresizingMaskIntoConstraints = false
-
-        
         return table
     }()
     
@@ -60,6 +60,7 @@ class StartViewController: UIViewController {
         view.addSubview(newGameButton)
         view.addSubview(table)
         setupConstraints()
+        updateTableHeight()
         
     }
 }
@@ -78,9 +79,31 @@ extension StartViewController {
             table.topAnchor.constraint(equalTo: titletext.bottomAnchor, constant: 50),
             table.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             table.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            table.bottomAnchor.constraint(lessThanOrEqualTo: newGameButton.topAnchor, constant: -20),
-            table.heightAnchor.constraint(greaterThanOrEqualToConstant: 100)
+
         ])
+        tableHeightConstraint = table.heightAnchor.constraint(equalToConstant: 0)
+        tableHeightConstraint.isActive = true
+    }
+    
+    func updateTableHeight() {
+        DispatchQueue.main.async {
+            self.table.layoutIfNeeded()
+            let tableTop = self.table.frame.origin.y
+            let buttonTop = self.newGameButton.frame.origin.y
+            let availableHeight = buttonTop - tableTop - 100
+            
+            let contentHeight = self.table.contentSize.height
+            
+            let newHeight = min(contentHeight, availableHeight)
+            
+            let minHeight: CGFloat = 44
+            let finalHeight = max(newHeight, minHeight)
+            
+            UIView.animate(withDuration: 0.3) {
+                self.tableHeightConstraint.constant = finalHeight
+                self.view.layoutIfNeeded()
+            }
+        }
     }
 }
 
@@ -94,13 +117,12 @@ extension StartViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
         
+        
         if indexPath.row == players.count {
-            // Последняя ячейка - "Add player"
             content.text = "Add player"
             content.textProperties.color = .appGreen ?? .green
             content.textProperties.font = .nunitoSemiBold(size: 16) ?? .systemFont(ofSize: 26)
         } else {
-            // Обычные ячейки с игроками
             content.text = players[indexPath.row]
             content.textProperties.color = .white
             content.textProperties.font = .nunitoSemiBold(size: 20) ?? .systemFont(ofSize: 26)
@@ -121,39 +143,54 @@ extension StartViewController: UITableViewDelegate {
         } else {
             return .delete
         }
+        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Удаляем игрока
             players.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
-            // Добавляем нового игрока
             players.append("Player \(players.count)")
             tableView.insertRows(at: [IndexPath(row: players.count - 1, section: 0)], with: .automatic)
         }
+        self.updateTableHeight()
+
+    }
+        
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .appBackBlack
+        
+        let label = UILabel()
+        label.text = "Players"
+        label.textColor = .white
+        label.font = .nunitoSemiBold(size: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        headerView.addSubview(label)
+        
+
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16),
+            label.trailingAnchor.constraint(lessThanOrEqualTo: headerView.trailingAnchor, constant: -16),
+            label.bottomAnchor.constraint(lessThanOrEqualTo: headerView.bottomAnchor, constant: -8)
+        ])
+        
+        return headerView
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            return "Players" // или "Игроки"
-        }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.subviews
+            .filter { $0.frame.height <= 1 }
+            .forEach { $0.removeFromSuperview() }
         
-        // Настройка внешнего вида заголовка
-        func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-            guard let header = view as? UITableViewHeaderFooterView else { return }
-            header.textLabel?.textColor = .white
-            header.textLabel?.font = .nunitoSemiBold(size: 16)
-            header.textLabel?.textAlignment = .left
-            header.backgroundColor = .clear
-            header.textLabel?.translatesAutoresizingMaskIntoConstraints = false
-               header.textLabel?.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16).isActive = true
-               header.textLabel?.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -16).isActive = true
-           
-            
-            
+        if indexPath.row > 0 {
+            let separator = UIView(frame: CGRect(x: 16, y: 0, width: cell.frame.width - 32, height: 0.5))
+            separator.backgroundColor = .appSeparatorTable
+            cell.addSubview(separator)
         }
-
+    }
 }
 
 
