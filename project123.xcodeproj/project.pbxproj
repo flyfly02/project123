@@ -16,6 +16,7 @@
 		9090393C2F0951C200388B42 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9090393B2F0951C200388B42 /* Colors.swift */; };
 		909039482F095FE500388B42 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909039472F095FE500388B42 /* FontProvider.swift */; };
 		9090394E2F09656E00388B42 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9090394D2F09656E00388B42 /* Nunito-ExtraBold.ttf */; };
+		90AB649A2F0FF30F00CEF1E9 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9090393B2F0951C200388B42 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		909039472F095FE500388B42 /* FontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontProvider.swift; sourceTree = "<group>"; };
 		9090394D2F09656E00388B42 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				909039272F09379600388B42 /* StartViewController.swift */,
+				90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */,
 			);
 			path = StartScreen;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			files = (
 				9090392E2F09379600388B42 /* project123.xcdatamodeld in Sources */,
 				909039482F095FE500388B42 /* FontProvider.swift in Sources */,
+				90AB649A2F0FF30F00CEF1E9 /* PlayerCell.swift in Sources */,
 				9090393C2F0951C200388B42 /* Colors.swift in Sources */,
 				909039282F09379600388B42 /* StartViewController.swift in Sources */,
 				909039242F09379600388B42 /* AppDelegate.swift in Sources */,

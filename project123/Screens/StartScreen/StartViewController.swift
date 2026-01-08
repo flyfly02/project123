@@ -26,8 +26,7 @@ class StartViewController: UIViewController {
         let table = UITableView(frame: .zero, style: .plain)
         table.dataSource = self
         table.delegate = self
-        table.setEditing(true, animated: false)
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(PlayerCell.self, forCellReuseIdentifier: "cell")
         table.layer.cornerRadius = 15
         table.layer.masksToBounds  = true
         table.separatorColor = .clear
@@ -114,50 +113,34 @@ extension StartViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PlayerCell
+        let isAddCell = indexPath.row == players.count
+        cell.configure(isAddCell)
+        cell.onTableButtonTapped = { [weak self] in
+               guard let self = self else { return }
+            
+               if isAddCell {
+                   self.newPlayer()
+               } else {
+                   self.deletePlayer(at: indexPath.row)
+               }
+           }
         
-        
-        if indexPath.row == players.count {
-            content.text = "Add player"
-            content.textProperties.color = .appGreen ?? .green
-            content.textProperties.font = .nunitoSemiBold(size: 16) ?? .systemFont(ofSize: 26)
-        } else {
-            content.text = players[indexPath.row]
-            content.textProperties.color = .white
-            content.textProperties.font = .nunitoSemiBold(size: 20) ?? .systemFont(ofSize: 26)
+
+        if !isAddCell && indexPath.row < players.count {
+            cell.cellName.text = players[indexPath.row]
         }
         
-        cell.contentConfiguration = content
         cell.backgroundColor = .appBackBlack
+        cell.contentView.backgroundColor = .appBackBlack
         
-        return cell 
+        return cell
     }
 
 }
 
 extension StartViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if indexPath.row == players.count {
-            return .insert
-        } else {
-            return .delete
-        }
-        
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            players.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            players.append("Player \(players.count)")
-            tableView.insertRows(at: [IndexPath(row: players.count - 1, section: 0)], with: .automatic)
-        }
-        self.updateTableHeight()
-
-    }
-        
+  
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = .appBackBlack
@@ -189,6 +172,22 @@ extension StartViewController: UITableViewDelegate {
             let separator = UIView(frame: CGRect(x: 16, y: 0, width: cell.frame.width - 32, height: 0.5))
             separator.backgroundColor = .appSeparatorTable
             cell.addSubview(separator)
+        }
+    }
+}
+
+extension StartViewController {
+    private func newPlayer() {
+        players.append("Player \(players.count)")
+        table.reloadData()
+        updateTableHeight()
+    }
+
+    private func deletePlayer(at index: Int) {
+        if index < players.count {
+            players.remove(at: index)
+            table.reloadData()
+            updateTableHeight()
         }
     }
 }
