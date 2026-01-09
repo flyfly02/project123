@@ -17,6 +17,12 @@
 		909039482F095FE500388B42 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909039472F095FE500388B42 /* FontProvider.swift */; };
 		9090394E2F09656E00388B42 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9090394D2F09656E00388B42 /* Nunito-ExtraBold.ttf */; };
 		90AB649A2F0FF30F00CEF1E9 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */; };
+		90AFFD722F10FBAC00CE09FC /* AddPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD712F10FBAB00CE09FC /* AddPlayerVC.swift */; };
+		90AFFD752F110C0F00CE09FC /* AppBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD742F110C0F00CE09FC /* AppBarButtonItem.swift */; };
+		90AFFD922F11437900CE09FC /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD8E2F11437900CE09FC /* Player+CoreDataClass.swift */; };
+		90AFFD932F11437900CE09FC /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD8F2F11437900CE09FC /* Player+CoreDataProperties.swift */; };
+		90AFFD942F11437900CE09FC /* Roll+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD902F11437900CE09FC /* Roll+CoreDataClass.swift */; };
+		90AFFD952F11437900CE09FC /* Roll+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD912F11437900CE09FC /* Roll+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,12 @@
 		909039472F095FE500388B42 /* FontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontProvider.swift; sourceTree = "<group>"; };
 		9090394D2F09656E00388B42 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
 		90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
+		90AFFD712F10FBAB00CE09FC /* AddPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerVC.swift; sourceTree = "<group>"; };
+		90AFFD742F110C0F00CE09FC /* AppBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBarButtonItem.swift; sourceTree = "<group>"; };
+		90AFFD8E2F11437900CE09FC /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		90AFFD8F2F11437900CE09FC /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		90AFFD902F11437900CE09FC /* Roll+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Roll+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		90AFFD912F11437900CE09FC /* Roll+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Roll+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +77,7 @@
 		907D5B4D2F0A2C6C00ABBFAC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				90AFFD702F10FB7D00CE09FC /* AddPlayerScreen */,
 				907D5B4E2F0A2C7300ABBFAC /* StartScreen */,
 			);
 			path = Screens;
@@ -98,6 +111,11 @@
 		909039222F09379600388B42 /* project123 */ = {
 			isa = PBXGroup;
 			children = (
+				90AFFD8E2F11437900CE09FC /* Player+CoreDataClass.swift */,
+				90AFFD8F2F11437900CE09FC /* Player+CoreDataProperties.swift */,
+				90AFFD902F11437900CE09FC /* Roll+CoreDataClass.swift */,
+				90AFFD912F11437900CE09FC /* Roll+CoreDataProperties.swift */,
+				90AFFD732F110AEA00CE09FC /* CustomElements */,
 				907D5B4D2F0A2C6C00ABBFAC /* Screens */,
 				907D5B4C2F0A2C5000ABBFAC /* CoreData */,
 				907D5B4B2F0A2C2100ABBFAC /* System */,
@@ -133,6 +151,22 @@
 				909039472F095FE500388B42 /* FontProvider.swift */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		90AFFD702F10FB7D00CE09FC /* AddPlayerScreen */ = {
+			isa = PBXGroup;
+			children = (
+				90AFFD712F10FBAB00CE09FC /* AddPlayerVC.swift */,
+			);
+			path = AddPlayerScreen;
+			sourceTree = "<group>";
+		};
+		90AFFD732F110AEA00CE09FC /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				90AFFD742F110C0F00CE09FC /* AppBarButtonItem.swift */,
+			);
+			path = CustomElements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,12 +240,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90AFFD942F11437900CE09FC /* Roll+CoreDataClass.swift in Sources */,
 				9090392E2F09379600388B42 /* project123.xcdatamodeld in Sources */,
+				90AFFD952F11437900CE09FC /* Roll+CoreDataProperties.swift in Sources */,
 				909039482F095FE500388B42 /* FontProvider.swift in Sources */,
 				90AB649A2F0FF30F00CEF1E9 /* PlayerCell.swift in Sources */,
+				90AFFD722F10FBAC00CE09FC /* AddPlayerVC.swift in Sources */,
 				9090393C2F0951C200388B42 /* Colors.swift in Sources */,
+				90AFFD932F11437900CE09FC /* Player+CoreDataProperties.swift in Sources */,
 				909039282F09379600388B42 /* StartViewController.swift in Sources */,
+				90AFFD922F11437900CE09FC /* Player+CoreDataClass.swift in Sources */,
 				909039242F09379600388B42 /* AppDelegate.swift in Sources */,
+				90AFFD752F110C0F00CE09FC /* AppBarButtonItem.swift in Sources */,
 				909039262F09379600388B42 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

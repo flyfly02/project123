@@ -120,6 +120,7 @@ extension StartViewController: UITableViewDataSource {
                guard let self = self else { return }
             
                if isAddCell {
+                   self.navigationController?.pushViewController(AddPlayerVC(), animated: true)
                    self.newPlayer()
                } else {
                    self.deletePlayer(at: indexPath.row)
@@ -152,8 +153,6 @@ extension StartViewController: UITableViewDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         headerView.addSubview(label)
-        
-
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16),
             label.trailingAnchor.constraint(lessThanOrEqualTo: headerView.trailingAnchor, constant: -16),
