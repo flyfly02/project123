@@ -48,6 +48,7 @@ class StartViewController: UIViewController {
         button.layer.shadowRadius = 0
         button.layer.masksToBounds = false
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(startGameTapped), for: .touchUpInside)
         return button
     }()
     
@@ -221,6 +222,13 @@ extension StartViewController {
         table.reloadData()
         updateTableHeight()
         dataManager.saveContext()
+    }
+}
+
+extension StartViewController {
+    @objc private func startGameTapped() {
+        let newGameVC = GameScreenVC()
+        self.navigationController?.pushViewController(newGameVC, animated: true)
     }
 }
 

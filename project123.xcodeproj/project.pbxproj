@@ -21,6 +21,7 @@
 		909C25172F125AE400721F41 /* Roll+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25132F125AE400721F41 /* Roll+CoreDataClass.swift */; };
 		909C25182F125AE400721F41 /* Roll+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25142F125AE400721F41 /* Roll+CoreDataProperties.swift */; };
 		909C251A2F125B2300721F41 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25192F125B2300721F41 /* CoreDataManager.swift */; };
+		909C251D2F12879200721F41 /* GameScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C251C2F12879200721F41 /* GameScreenVC.swift */; };
 		90AB649A2F0FF30F00CEF1E9 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */; };
 		90AFFD722F10FBAC00CE09FC /* AddPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD712F10FBAB00CE09FC /* AddPlayerVC.swift */; };
 		90AFFD752F110C0F00CE09FC /* AppBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD742F110C0F00CE09FC /* AppBarButtonItem.swift */; };
@@ -43,6 +44,7 @@
 		909C25132F125AE400721F41 /* Roll+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Roll+CoreDataClass.swift"; path = "../../CoreData/Roll+CoreDataClass.swift"; sourceTree = "<group>"; };
 		909C25142F125AE400721F41 /* Roll+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Roll+CoreDataProperties.swift"; path = "../../CoreData/Roll+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		909C25192F125B2300721F41 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		909C251C2F12879200721F41 /* GameScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenVC.swift; sourceTree = "<group>"; };
 		90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		90AFFD712F10FBAB00CE09FC /* AddPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerVC.swift; sourceTree = "<group>"; };
 		90AFFD742F110C0F00CE09FC /* AppBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBarButtonItem.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 		907D5B4D2F0A2C6C00ABBFAC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				909C251B2F12876400721F41 /* GameScreen */,
 				90AFFD702F10FB7D00CE09FC /* AddPlayerScreen */,
 				907D5B4E2F0A2C7300ABBFAC /* StartScreen */,
 			);
@@ -164,6 +167,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		909C251B2F12876400721F41 /* GameScreen */ = {
+			isa = PBXGroup;
+			children = (
+				909C251C2F12879200721F41 /* GameScreenVC.swift */,
+			);
+			path = GameScreen;
+			sourceTree = "<group>";
+		};
 		90AFFD702F10FB7D00CE09FC /* AddPlayerScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909C251D2F12879200721F41 /* GameScreenVC.swift in Sources */,
 				909C25172F125AE400721F41 /* Roll+CoreDataClass.swift in Sources */,
 				909039482F095FE500388B42 /* FontProvider.swift in Sources */,
 				909C25182F125AE400721F41 /* Roll+CoreDataProperties.swift in Sources */,
