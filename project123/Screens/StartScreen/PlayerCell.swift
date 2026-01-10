@@ -47,6 +47,7 @@ class PlayerCell: UITableViewCell {
         setupConstraints()
     }
     
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             actionButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),

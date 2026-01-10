@@ -2,7 +2,7 @@
 //  Roll+CoreDataProperties.swift
 //  project123
 //
-//  Created by Илья Богуш on 9.01.26.
+//  Created by Илья Богуш on 10.01.26.
 //
 //
 
@@ -18,7 +18,7 @@ extension Roll {
 
     @NSManaged public var id: UUID?
     @NSManaged public var value: Int64
-    @NSManaged public var player: Player?
+    @NSManaged public var player: Roll?
 
 }
 

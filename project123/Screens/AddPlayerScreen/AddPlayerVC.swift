@@ -9,6 +9,7 @@ import UIKit
 
 class AddPlayerVC: UIViewController {
     
+    var onAddTapped: ((String?) -> Void)?
     private lazy var titletext: UILabel = {
         let title = UILabel()
         title.font = .nunitoExtraBold(size: 36)
@@ -50,6 +51,8 @@ class AddPlayerVC: UIViewController {
         setupConstraints()
         navigationItem.rightBarButtonItem = rightAddButton
         navigationItem.leftBarButtonItem = leftBackButton
+        
+        
     }
     
     private func setupConstraints() {
@@ -71,6 +74,14 @@ extension AddPlayerVC {
     }
     
     @objc private func addTapped() {
+        let text = addPlayerTextField.text ?? ""
+        let trimmedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedText.isEmpty else {return}
         self.navigationController?.popViewController(animated: true)
+        self.onAddTapped?(trimmedText)
+        
+
     }
 }
+
+

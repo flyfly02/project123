@@ -6,11 +6,10 @@
 //
 
 import UIKit
+import CoreData
 
 class StartViewController: UIViewController {
     
-    private let addPlayer = "Add player"
-    private var players: [String] = ["mike", "anna", "polly"]
     private var tableHeightConstraint: NSLayoutConstraint!
     
     private lazy var titletext: UILabel = {
@@ -35,7 +34,7 @@ class StartViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
-    
+
     private lazy var newGameButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 30
@@ -52,6 +51,9 @@ class StartViewController: UIViewController {
         return button
     }()
     
+    var dataSource: [Player] = []
+    lazy var dataManager = CoreDataManager.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .appMainBlack
@@ -59,8 +61,8 @@ class StartViewController: UIViewController {
         view.addSubview(newGameButton)
         view.addSubview(table)
         setupConstraints()
+        loadPlayers()
         updateTableHeight()
-        
     }
 }
 
@@ -108,19 +110,18 @@ extension StartViewController {
 
 extension StartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        players.count + 1
+        dataSource.count + 1
 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PlayerCell
-        let isAddCell = indexPath.row == players.count
+        let isAddCell = indexPath.row == dataSource.count
         cell.configure(isAddCell)
         cell.onTableButtonTapped = { [weak self] in
                guard let self = self else { return }
             
                if isAddCell {
-                   self.navigationController?.pushViewController(AddPlayerVC(), animated: true)
                    self.newPlayer()
                } else {
                    self.deletePlayer(at: indexPath.row)
@@ -128,8 +129,8 @@ extension StartViewController: UITableViewDataSource {
            }
         
 
-        if !isAddCell && indexPath.row < players.count {
-            cell.cellName.text = players[indexPath.row]
+        if !isAddCell && indexPath.row < dataSource.count {
+            cell.cellName.text = dataSource[indexPath.row].name
         }
         
         cell.backgroundColor = .appBackBlack
@@ -141,6 +142,10 @@ extension StartViewController: UITableViewDataSource {
 }
 
 extension StartViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44 
+    }
   
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
@@ -177,17 +182,45 @@ extension StartViewController: UITableViewDelegate {
 
 extension StartViewController {
     private func newPlayer() {
-        players.append("Player \(players.count)")
-        table.reloadData()
-        updateTableHeight()
-    }
+           let addPlayerVC = AddPlayerVC()
+           addPlayerVC.onAddTapped = { [weak self] name in
+               self?.loadPlayer(name)
+
+           }
+           navigationController?.pushViewController(addPlayerVC, animated: true)
+       }
 
     private func deletePlayer(at index: Int) {
-        if index < players.count {
-            players.remove(at: index)
+        if index < dataSource.count {
+            let deletedPlayer = dataSource[index]
+            dataManager.viewContext.delete(deletedPlayer)
+            dataSource.remove(at: index)
             table.reloadData()
             updateTableHeight()
+            dataManager.saveContext()
         }
+    }
+    
+    private func loadPlayers() {
+        let playerFetchRequest = Player.fetchRequest()
+        do {
+            dataSource = try dataManager.viewContext.fetch(playerFetchRequest)
+            table.reloadData()
+        } catch {
+            print("Error is: \(error)")
+        }
+    }
+    
+    private func loadPlayer(_ name: String?) {
+        guard let name = name, !name.isEmpty else { return }
+        let player = Player(context: dataManager.viewContext)
+        player.name = name
+        player.id = UUID()
+        player.score = 0
+        dataSource.append(player)
+        table.reloadData()
+        updateTableHeight()
+        dataManager.saveContext()
     }
 }
 
