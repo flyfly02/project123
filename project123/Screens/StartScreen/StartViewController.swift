@@ -35,7 +35,7 @@ class StartViewController: UIViewController {
         return table
     }()
 
-    private lazy var newGameButton: UIButton = {
+    private lazy var startGameButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 30
         button.backgroundColor = .appGreen
@@ -59,7 +59,7 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .appMainBlack
         view.addSubview(titletext)
-        view.addSubview(newGameButton)
+        view.addSubview(startGameButton)
         view.addSubview(table)
         setupConstraints()
         loadPlayers()
@@ -73,10 +73,10 @@ extension StartViewController {
             titletext.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             titletext.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 20),
             
-            newGameButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
-            newGameButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 20),
-            newGameButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -20),
-            newGameButton.heightAnchor.constraint(equalToConstant: 65),
+            startGameButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            startGameButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 20),
+            startGameButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -20),
+            startGameButton.heightAnchor.constraint(equalToConstant: 65),
             
             table.topAnchor.constraint(equalTo: titletext.bottomAnchor, constant: 50),
             table.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -91,7 +91,7 @@ extension StartViewController {
         DispatchQueue.main.async {
             self.table.layoutIfNeeded()
             let tableTop = self.table.frame.origin.y
-            let buttonTop = self.newGameButton.frame.origin.y
+            let buttonTop = self.startGameButton.frame.origin.y
             let availableHeight = buttonTop - tableTop - 100
             
             let contentHeight = self.table.contentSize.height
@@ -198,6 +198,7 @@ extension StartViewController {
             dataSource.remove(at: index)
             table.reloadData()
             updateTableHeight()
+            updateStartGameButtonCondition()
             dataManager.saveContext()
         }
     }
@@ -207,6 +208,7 @@ extension StartViewController {
         do {
             dataSource = try dataManager.viewContext.fetch(playerFetchRequest)
             table.reloadData()
+            updateStartGameButtonCondition()
         } catch {
             print("Error is: \(error)")
         }
@@ -221,6 +223,7 @@ extension StartViewController {
         dataSource.append(player)
         table.reloadData()
         updateTableHeight()
+        updateStartGameButtonCondition()
         dataManager.saveContext()
     }
 }
@@ -229,6 +232,14 @@ extension StartViewController {
     @objc private func startGameTapped() {
         let newGameVC = GameScreenVC()
         self.navigationController?.pushViewController(newGameVC, animated: true)
+    }
+    
+    private func updateStartGameButtonCondition() {
+        if dataSource.isEmpty {
+            startGameButton.isEnabled = false
+        } else {
+            startGameButton.isEnabled = true      
+        }
     }
 }
 

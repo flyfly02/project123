@@ -11,6 +11,7 @@ class GameScreenVC: UIViewController {
     
     private lazy var leftNewGameButton = AppBarButtonItem.createButton("New Game", nil, nil)
     private lazy var rightResultsButton = AppBarButtonItem.createButton("Results", nil, nil)
+    
     private lazy var gameLabel: UILabel = {
         let label = UILabel()
         label.text = "Game"
@@ -23,7 +24,7 @@ class GameScreenVC: UIViewController {
     private lazy var diceImageView: UIImageView = {
         let dice = UIImageView()
         dice.image = UIImage(systemName: "die.face.4")
-        dice.tintColor = .black
+        dice.tintColor = .white
         dice.translatesAutoresizingMaskIntoConstraints = false
         return dice
     }()
@@ -47,10 +48,10 @@ class GameScreenVC: UIViewController {
             gameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
             gameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
                                      
-            diceImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
+            diceImageView.bottomAnchor.constraint(equalTo: gameLabel.bottomAnchor),
             diceImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            diceImageView.heightAnchor.constraint(equalToConstant: 30),
-            diceImageView.widthAnchor.constraint(equalToConstant: 30),
+            diceImageView.heightAnchor.constraint(equalTo: gameLabel.heightAnchor),
+            diceImageView.widthAnchor.constraint(equalTo: gameLabel.heightAnchor),
         
         
         ])
