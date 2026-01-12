@@ -64,6 +64,7 @@ class StartViewController: UIViewController {
         setupConstraints()
         loadPlayers()
         updateTableHeight()
+
     }
 }
 

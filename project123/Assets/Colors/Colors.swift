@@ -16,6 +16,8 @@ extension UIColor {
     static let appButtonShadow = UIColor(named: "appButtonShadow")
     static let appSeparatorTable = UIColor(named: "appSeparatorTable")
     static let appGray = UIColor(named: "appGray")
+    static let appTimerIsOff = UIColor(named: "appTimerIsOff")
+    static let appCollectionPlayerName = UIColor(named: "appCollectionPlayerName")
 }
 
 

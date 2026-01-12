@@ -22,6 +22,8 @@
 		909C25182F125AE400721F41 /* Roll+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25142F125AE400721F41 /* Roll+CoreDataProperties.swift */; };
 		909C251A2F125B2300721F41 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25192F125B2300721F41 /* CoreDataManager.swift */; };
 		909C251D2F12879200721F41 /* GameScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C251C2F12879200721F41 /* GameScreenVC.swift */; };
+		90A8A2102F155B3800026A80 /* PlayerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8A20F2F155B3800026A80 /* PlayerCollectionCell.swift */; };
+		90A8A2122F155E9000026A80 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90A8A2112F155E9000026A80 /* Nunito-Bold.ttf */; };
 		90AB649A2F0FF30F00CEF1E9 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */; };
 		90AFFD722F10FBAC00CE09FC /* AddPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD712F10FBAB00CE09FC /* AddPlayerVC.swift */; };
 		90AFFD752F110C0F00CE09FC /* AppBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD742F110C0F00CE09FC /* AppBarButtonItem.swift */; };
@@ -45,6 +47,8 @@
 		909C25142F125AE400721F41 /* Roll+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Roll+CoreDataProperties.swift"; path = "../../CoreData/Roll+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		909C25192F125B2300721F41 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		909C251C2F12879200721F41 /* GameScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenVC.swift; sourceTree = "<group>"; };
+		90A8A20F2F155B3800026A80 /* PlayerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCollectionCell.swift; sourceTree = "<group>"; };
+		90A8A2112F155E9000026A80 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		90AFFD712F10FBAB00CE09FC /* AddPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerVC.swift; sourceTree = "<group>"; };
 		90AFFD742F110C0F00CE09FC /* AppBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBarButtonItem.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 		9090393E2F0954DD00388B42 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				90A8A2112F155E9000026A80 /* Nunito-Bold.ttf */,
 				907D5B4F2F0A3E1100ABBFAC /* Nunito-SemiBold.ttf */,
 				9090394D2F09656E00388B42 /* Nunito-ExtraBold.ttf */,
 				909039472F095FE500388B42 /* FontProvider.swift */,
@@ -171,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				909C251C2F12879200721F41 /* GameScreenVC.swift */,
+				90A8A20F2F155B3800026A80 /* PlayerCollectionCell.swift */,
 			);
 			path = GameScreen;
 			sourceTree = "<group>";
@@ -251,6 +257,7 @@
 			files = (
 				907D5B502F0A3E1100ABBFAC /* Nunito-SemiBold.ttf in Resources */,
 				9090394E2F09656E00388B42 /* Nunito-ExtraBold.ttf in Resources */,
+				90A8A2122F155E9000026A80 /* Nunito-Bold.ttf in Resources */,
 				909039302F09379700388B42 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +283,7 @@
 				909039242F09379600388B42 /* AppDelegate.swift in Sources */,
 				90AFFD752F110C0F00CE09FC /* AppBarButtonItem.swift in Sources */,
 				909C251A2F125B2300721F41 /* CoreDataManager.swift in Sources */,
+				90A8A2102F155B3800026A80 /* PlayerCollectionCell.swift in Sources */,
 				909039262F09379600388B42 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
