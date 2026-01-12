@@ -51,7 +51,7 @@ class GameScreenVC: UIViewController {
     
     private lazy var playersCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 180, height: 250)
+        layout.itemSize = CGSize(width: 180, height: view.frame.height * 0.36)
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.dataSource = self
@@ -106,7 +106,7 @@ class GameScreenVC: UIViewController {
             playersCollectionView.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 40),
             playersCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             playersCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            playersCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4 ),
+            playersCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.37 ),
             
         ])
     }
@@ -135,7 +135,7 @@ extension GameScreenVC {
 
 extension GameScreenVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
