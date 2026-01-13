@@ -51,7 +51,7 @@ class GameScreenVC: UIViewController {
     
     private lazy var playersCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 180, height: view.frame.height * 0.36)
+        layout.itemSize = CGSize(width: 180, height: view.frame.height * 0.34)
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.dataSource = self
@@ -75,13 +75,34 @@ class GameScreenVC: UIViewController {
     private lazy var smallButtonsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
+        stackView.distribution = .equalSpacing
 
         var value: Int = -10
-        for i in 0...5{
-            stackView.addArrangedSubview(AppButtonFactory.createChangePlayerScore(value, 55))
+        for i in 0...4{
+            stackView.addArrangedSubview(AppButtonFactory.createChangePlayerScore(value, 55, .nunitoExtraBold(size: 25)!))
             value = value + 5
         }
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private lazy var bigButtonsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .center
+        let previousButton = AppButtonFactory.createImageButton("previousImage")
+        let bigChangeScoreButton = AppButtonFactory.createChangePlayerScore(10, 90, .nunitoExtraBold(size: 40)!)
+        let nextButton = AppButtonFactory.createImageButton("nextImage")
+        previousButton.widthAnchor.constraint(equalToConstant: 34).isActive = true
+        previousButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        previousButton.widthAnchor.constraint(equalToConstant: 34).isActive = true
+        previousButton.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        [previousButton, bigChangeScoreButton, nextButton].forEach {
+                stackView.addArrangedSubview($0)
+            }
+                                                                            
+                                                                            
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -109,6 +130,7 @@ class GameScreenVC: UIViewController {
         view.addSubview(playersCollectionView)
         view.addSubview(undoButton)
         view.addSubview(smallButtonsStackView)
+        view.addSubview(bigButtonsStackView)
         setupTimerUI(timerLabel, timerButton)
         setupConstraints()
     }
@@ -131,20 +153,25 @@ class GameScreenVC: UIViewController {
             timerButton.widthAnchor.constraint(equalToConstant:  16),
             timerButton.heightAnchor.constraint(equalToConstant:  21),
             
-            playersCollectionView.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 40),
+            playersCollectionView.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 20),
             playersCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             playersCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            playersCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.37 ),
+            playersCollectionView.bottomAnchor.constraint(equalTo: bigButtonsStackView.topAnchor, constant: -20),
             
             undoButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            undoButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
+            undoButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
             undoButton.widthAnchor.constraint(equalToConstant:  15),
             undoButton.heightAnchor.constraint(equalToConstant:  20),
             
             smallButtonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             smallButtonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             smallButtonsStackView.heightAnchor.constraint(equalToConstant: 55),
-            smallButtonsStackView.bottomAnchor.constraint(equalTo: undoButton.topAnchor, constant: -20)
+            smallButtonsStackView.bottomAnchor.constraint(equalTo: undoButton.topAnchor, constant: -20),
+            
+            bigButtonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 46),
+            bigButtonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -46),
+            bigButtonsStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.16),
+            bigButtonsStackView.bottomAnchor.constraint(equalTo: smallButtonsStackView.topAnchor, constant: -10)
             
         ])
     }
