@@ -26,7 +26,7 @@
 		90A8A2122F155E9000026A80 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90A8A2112F155E9000026A80 /* Nunito-Bold.ttf */; };
 		90AB649A2F0FF30F00CEF1E9 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */; };
 		90AFFD722F10FBAC00CE09FC /* AddPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD712F10FBAB00CE09FC /* AddPlayerVC.swift */; };
-		90AFFD752F110C0F00CE09FC /* AppBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD742F110C0F00CE09FC /* AppBarButtonItem.swift */; };
+		90AFFD752F110C0F00CE09FC /* AppButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD742F110C0F00CE09FC /* AppButtonFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +51,7 @@
 		90A8A2112F155E9000026A80 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		90AFFD712F10FBAB00CE09FC /* AddPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerVC.swift; sourceTree = "<group>"; };
-		90AFFD742F110C0F00CE09FC /* AppBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBarButtonItem.swift; sourceTree = "<group>"; };
+		90AFFD742F110C0F00CE09FC /* AppButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButtonFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +192,7 @@
 		90AFFD732F110AEA00CE09FC /* CustomElements */ = {
 			isa = PBXGroup;
 			children = (
-				90AFFD742F110C0F00CE09FC /* AppBarButtonItem.swift */,
+				90AFFD742F110C0F00CE09FC /* AppButtonFactory.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -281,7 +281,7 @@
 				909C25062F12595C00721F41 /* CoreDataModel.xcdatamodeld in Sources */,
 				909C25152F125AE400721F41 /* Player+CoreDataClass.swift in Sources */,
 				909039242F09379600388B42 /* AppDelegate.swift in Sources */,
-				90AFFD752F110C0F00CE09FC /* AppBarButtonItem.swift in Sources */,
+				90AFFD752F110C0F00CE09FC /* AppButtonFactory.swift in Sources */,
 				909C251A2F125B2300721F41 /* CoreDataManager.swift in Sources */,
 				90A8A2102F155B3800026A80 /* PlayerCollectionCell.swift in Sources */,
 				909039262F09379600388B42 /* SceneDelegate.swift in Sources */,

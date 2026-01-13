@@ -35,8 +35,8 @@ class AddPlayerVC: UIViewController {
         return textfield
     }()
     
-    private lazy var rightAddButton = AppBarButtonItem.createButton("Add", self, #selector(addTapped))
-    private lazy var leftBackButton = AppBarButtonItem.createButton("Back", self, #selector(backTapped))
+    private lazy var rightAddButton = AppButtonFactory.createBarItem("Add", self, #selector(addTapped))
+    private lazy var leftBackButton = AppButtonFactory.createBarItem("Back", self, #selector(backTapped))
 
     override func viewDidLoad() {
         super.viewDidLoad()

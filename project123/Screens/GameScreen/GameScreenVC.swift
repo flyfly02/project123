@@ -10,8 +10,8 @@ import UIKit
 class GameScreenVC: UIViewController {
     
     private var isGameIsOn: Bool = false
-    private lazy var leftNewGameButton = AppBarButtonItem.createButton("New Game", nil, nil)
-    private lazy var rightResultsButton = AppBarButtonItem.createButton("Results", nil, nil)
+    private lazy var leftNewGameButton = AppButtonFactory.createBarItem("New Game", nil, nil)
+    private lazy var rightResultsButton = AppButtonFactory.createBarItem("Results", nil, nil)
     
     private lazy var gameLabel: UILabel = {
         let label = UILabel()
@@ -62,6 +62,32 @@ class GameScreenVC: UIViewController {
         return collection
     }()
     
+    private lazy var undoButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "undoImage"), for: .normal)
+        button.imageView?.contentMode = .scaleToFill
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var smallButtonsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+
+        var value: Int = -10
+        for i in 0...5{
+            stackView.addArrangedSubview(AppButtonFactory.createChangePlayerScore(value, 55))
+            value = value + 5
+        }
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -81,6 +107,8 @@ class GameScreenVC: UIViewController {
         view.addSubview(timerLabel)
         view.addSubview(timerButton)
         view.addSubview(playersCollectionView)
+        view.addSubview(undoButton)
+        view.addSubview(smallButtonsStackView)
         setupTimerUI(timerLabel, timerButton)
         setupConstraints()
     }
@@ -107,6 +135,16 @@ class GameScreenVC: UIViewController {
             playersCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             playersCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             playersCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.37 ),
+            
+            undoButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            undoButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
+            undoButton.widthAnchor.constraint(equalToConstant:  15),
+            undoButton.heightAnchor.constraint(equalToConstant:  20),
+            
+            smallButtonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            smallButtonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            smallButtonsStackView.heightAnchor.constraint(equalToConstant: 55),
+            smallButtonsStackView.bottomAnchor.constraint(equalTo: undoButton.topAnchor, constant: -20)
             
         ])
     }
