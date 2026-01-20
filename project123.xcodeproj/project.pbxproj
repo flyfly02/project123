@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		907CAFE42F1F47040071FD55 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFE32F1F47040071FD55 /* PlayerModel.swift */; };
+		907CAFE62F1F48150071FD55 /* RollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFE52F1F48150071FD55 /* RollModel.swift */; };
+		907CAFE92F1F49A20071FD55 /* PlayerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFE82F1F49A20071FD55 /* PlayerMapper.swift */; };
+		907CAFED2F1F5BF50071FD55 /* PlayerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFEC2F1F5BF50071FD55 /* PlayerRepository.swift */; };
+		907CAFEF2F1F5C740071FD55 /* CreatePlayerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFEE2F1F5C740071FD55 /* CreatePlayerUseCase.swift */; };
 		907D5B502F0A3E1100ABBFAC /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 907D5B4F2F0A3E1100ABBFAC /* Nunito-SemiBold.ttf */; };
 		909039242F09379600388B42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909039232F09379600388B42 /* AppDelegate.swift */; };
 		909039262F09379600388B42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909039252F09379600388B42 /* SceneDelegate.swift */; };
@@ -30,6 +35,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		907CAFE32F1F47040071FD55 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
+		907CAFE52F1F48150071FD55 /* RollModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollModel.swift; sourceTree = "<group>"; };
+		907CAFE82F1F49A20071FD55 /* PlayerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMapper.swift; sourceTree = "<group>"; };
+		907CAFEC2F1F5BF50071FD55 /* PlayerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRepository.swift; sourceTree = "<group>"; };
+		907CAFEE2F1F5C740071FD55 /* CreatePlayerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerUseCase.swift; sourceTree = "<group>"; };
 		907D5B4F2F0A3E1100ABBFAC /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		909039202F09379600388B42 /* project123.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project123.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		909039232F09379600388B42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +75,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		907CAFE12F1F45F20071FD55 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				907CAFE32F1F47040071FD55 /* PlayerModel.swift */,
+				907CAFE52F1F48150071FD55 /* RollModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		907CAFE72F1F49940071FD55 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				907CAFE82F1F49A20071FD55 /* PlayerMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		907CAFEA2F1F59B70071FD55 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				907CAFEC2F1F5BF50071FD55 /* PlayerRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		907CAFEB2F1F59C10071FD55 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				907CAFEE2F1F5C740071FD55 /* CreatePlayerUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		907D5B4B2F0A2C2100ABBFAC /* System */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,14 +117,14 @@
 			path = System;
 			sourceTree = "<group>";
 		};
-		907D5B4D2F0A2C6C00ABBFAC /* Screens */ = {
+		907D5B4D2F0A2C6C00ABBFAC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				909C251B2F12876400721F41 /* GameScreen */,
 				90AFFD702F10FB7D00CE09FC /* AddPlayerScreen */,
 				907D5B4E2F0A2C7300ABBFAC /* StartScreen */,
 			);
-			path = Screens;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		907D5B4E2F0A2C7300ABBFAC /* StartScreen */ = {
@@ -112,24 +155,28 @@
 		909039222F09379600388B42 /* project123 */ = {
 			isa = PBXGroup;
 			children = (
+				907CAFEB2F1F59C10071FD55 /* UseCases */,
+				907CAFEA2F1F59B70071FD55 /* Repositories */,
+				907CAFE72F1F49940071FD55 /* Mapper */,
+				907CAFE12F1F45F20071FD55 /* Models */,
 				909C250F2F125A6100721F41 /* Storage */,
 				90AFFD732F110AEA00CE09FC /* CustomElements */,
-				907D5B4D2F0A2C6C00ABBFAC /* Screens */,
+				907D5B4D2F0A2C6C00ABBFAC /* Modules */,
 				907D5B4B2F0A2C2100ABBFAC /* System */,
-				9090393A2F09511400388B42 /* Assets */,
+				9090393A2F09511400388B42 /* Resources */,
 				909039342F09379700388B42 /* Info.plist */,
 			);
 			path = project123;
 			sourceTree = "<group>";
 		};
-		9090393A2F09511400388B42 /* Assets */ = {
+		9090393A2F09511400388B42 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				9090393E2F0954DD00388B42 /* Fonts */,
 				9090393D2F0954D400388B42 /* Colors */,
 				9090392F2F09379700388B42 /* Assets.xcassets */,
 			);
-			path = Assets;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		9090393D2F0954D400388B42 /* Colors */ = {
@@ -154,9 +201,9 @@
 		909C250F2F125A6100721F41 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				909C25102F125A6900721F41 /* Models */,
 				909C25042F12595B00721F41 /* CoreDataModel.xcdatamodeld */,
 				909C25192F125B2300721F41 /* CoreDataManager.swift */,
-				909C25102F125A6900721F41 /* Models */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -276,11 +323,16 @@
 				90AB649A2F0FF30F00CEF1E9 /* PlayerCell.swift in Sources */,
 				90AFFD722F10FBAC00CE09FC /* AddPlayerVC.swift in Sources */,
 				9090393C2F0951C200388B42 /* Colors.swift in Sources */,
+				907CAFE92F1F49A20071FD55 /* PlayerMapper.swift in Sources */,
 				909039282F09379600388B42 /* StartViewController.swift in Sources */,
+				907CAFE62F1F48150071FD55 /* RollModel.swift in Sources */,
 				909C25162F125AE400721F41 /* Player+CoreDataProperties.swift in Sources */,
 				909C25062F12595C00721F41 /* CoreDataModel.xcdatamodeld in Sources */,
+				907CAFED2F1F5BF50071FD55 /* PlayerRepository.swift in Sources */,
 				909C25152F125AE400721F41 /* Player+CoreDataClass.swift in Sources */,
+				907CAFE42F1F47040071FD55 /* PlayerModel.swift in Sources */,
 				909039242F09379600388B42 /* AppDelegate.swift in Sources */,
+				907CAFEF2F1F5C740071FD55 /* CreatePlayerUseCase.swift in Sources */,
 				90AFFD752F110C0F00CE09FC /* AppButtonFactory.swift in Sources */,
 				909C251A2F125B2300721F41 /* CoreDataManager.swift in Sources */,
 				90A8A2102F155B3800026A80 /* PlayerCollectionCell.swift in Sources */,

@@ -18,7 +18,7 @@ extension Player {
 
     @NSManaged public var id: UUID!
     @NSManaged public var name: String!
-    @NSManaged public var score: Int64
+    @NSManaged public var score: Int
     @NSManaged public var roll: Player?
 
 }

@@ -17,7 +17,7 @@ extension Roll {
     }
 
     @NSManaged public var id: UUID?
-    @NSManaged public var value: Int64
+    @NSManaged public var value: Int
     @NSManaged public var player: Roll?
 
 }
