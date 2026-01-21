@@ -7,12 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9073C30E2F21157400914AE7 /* PlayerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073C30D2F21157400914AE7 /* PlayerMapper.swift */; };
+		9073C3102F21192300914AE7 /* CDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073C30F2F21192300914AE7 /* CDManager.swift */; };
 		907CAFE42F1F47040071FD55 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFE32F1F47040071FD55 /* PlayerModel.swift */; };
 		907CAFE62F1F48150071FD55 /* RollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFE52F1F48150071FD55 /* RollModel.swift */; };
-		907CAFE92F1F49A20071FD55 /* PlayerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFE82F1F49A20071FD55 /* PlayerMapper.swift */; };
-		907CAFED2F1F5BF50071FD55 /* PlayerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFEC2F1F5BF50071FD55 /* PlayerRepository.swift */; };
+		907CAFED2F1F5BF50071FD55 /* CreatePlayerRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFEC2F1F5BF50071FD55 /* CreatePlayerRepo.swift */; };
 		907CAFEF2F1F5C740071FD55 /* CreatePlayerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFEE2F1F5C740071FD55 /* CreatePlayerUseCase.swift */; };
 		907D5B502F0A3E1100ABBFAC /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 907D5B4F2F0A3E1100ABBFAC /* Nunito-SemiBold.ttf */; };
+		908EB9392F20EA3E001B2D69 /* FetchPlayerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908EB9382F20EA3E001B2D69 /* FetchPlayerUseCase.swift */; };
+		908EB93B2F20EABD001B2D69 /* FetchAllPlayersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908EB93A2F20EABD001B2D69 /* FetchAllPlayersUseCase.swift */; };
+		908EB93D2F20EB20001B2D69 /* DeletePlayerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908EB93C2F20EB20001B2D69 /* DeletePlayerUseCase.swift */; };
+		908EB93F2F20EE40001B2D69 /* FetchPlayerRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908EB93E2F20EE40001B2D69 /* FetchPlayerRepo.swift */; };
+		908EB9412F20EE52001B2D69 /* FetchAllPlayersRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908EB9402F20EE52001B2D69 /* FetchAllPlayersRepo.swift */; };
+		908EB9432F20EE62001B2D69 /* DeletePlayerRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908EB9422F20EE62001B2D69 /* DeletePlayerRepo.swift */; };
+		908EB94A2F20FB4C001B2D69 /* PlayerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908EB9492F20FB4C001B2D69 /* PlayerDataSource.swift */; };
+		908EB94C2F20FC69001B2D69 /* PlayerRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908EB94B2F20FC69001B2D69 /* PlayerRepoImpl.swift */; };
 		909039242F09379600388B42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909039232F09379600388B42 /* AppDelegate.swift */; };
 		909039262F09379600388B42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909039252F09379600388B42 /* SceneDelegate.swift */; };
 		909039282F09379600388B42 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909039272F09379600388B42 /* StartViewController.swift */; };
@@ -21,8 +30,8 @@
 		909039482F095FE500388B42 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909039472F095FE500388B42 /* FontProvider.swift */; };
 		9090394E2F09656E00388B42 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9090394D2F09656E00388B42 /* Nunito-ExtraBold.ttf */; };
 		909C25062F12595C00721F41 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 909C25042F12595B00721F41 /* CoreDataModel.xcdatamodeld */; };
-		909C25152F125AE400721F41 /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25112F125AE400721F41 /* Player+CoreDataClass.swift */; };
-		909C25162F125AE400721F41 /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25122F125AE400721F41 /* Player+CoreDataProperties.swift */; };
+		909C25152F125AE400721F41 /* PlayerCDModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25112F125AE400721F41 /* PlayerCDModel+CoreDataClass.swift */; };
+		909C25162F125AE400721F41 /* PlayerCDModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25122F125AE400721F41 /* PlayerCDModel+CoreDataProperties.swift */; };
 		909C25172F125AE400721F41 /* Roll+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25132F125AE400721F41 /* Roll+CoreDataClass.swift */; };
 		909C25182F125AE400721F41 /* Roll+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25142F125AE400721F41 /* Roll+CoreDataProperties.swift */; };
 		909C251A2F125B2300721F41 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25192F125B2300721F41 /* CoreDataManager.swift */; };
@@ -35,12 +44,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9073C30D2F21157400914AE7 /* PlayerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMapper.swift; sourceTree = "<group>"; };
+		9073C30F2F21192300914AE7 /* CDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDManager.swift; sourceTree = "<group>"; };
 		907CAFE32F1F47040071FD55 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		907CAFE52F1F48150071FD55 /* RollModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollModel.swift; sourceTree = "<group>"; };
-		907CAFE82F1F49A20071FD55 /* PlayerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMapper.swift; sourceTree = "<group>"; };
-		907CAFEC2F1F5BF50071FD55 /* PlayerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRepository.swift; sourceTree = "<group>"; };
+		907CAFEC2F1F5BF50071FD55 /* CreatePlayerRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerRepo.swift; sourceTree = "<group>"; };
 		907CAFEE2F1F5C740071FD55 /* CreatePlayerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerUseCase.swift; sourceTree = "<group>"; };
 		907D5B4F2F0A3E1100ABBFAC /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		908EB9382F20EA3E001B2D69 /* FetchPlayerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPlayerUseCase.swift; sourceTree = "<group>"; };
+		908EB93A2F20EABD001B2D69 /* FetchAllPlayersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllPlayersUseCase.swift; sourceTree = "<group>"; };
+		908EB93C2F20EB20001B2D69 /* DeletePlayerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePlayerUseCase.swift; sourceTree = "<group>"; };
+		908EB93E2F20EE40001B2D69 /* FetchPlayerRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPlayerRepo.swift; sourceTree = "<group>"; };
+		908EB9402F20EE52001B2D69 /* FetchAllPlayersRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllPlayersRepo.swift; sourceTree = "<group>"; };
+		908EB9422F20EE62001B2D69 /* DeletePlayerRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePlayerRepo.swift; sourceTree = "<group>"; };
+		908EB9492F20FB4C001B2D69 /* PlayerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDataSource.swift; sourceTree = "<group>"; };
+		908EB94B2F20FC69001B2D69 /* PlayerRepoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRepoImpl.swift; sourceTree = "<group>"; };
 		909039202F09379600388B42 /* project123.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project123.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		909039232F09379600388B42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		909039252F09379600388B42 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,10 +69,10 @@
 		909039472F095FE500388B42 /* FontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontProvider.swift; sourceTree = "<group>"; };
 		9090394D2F09656E00388B42 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
 		909C25052F12595B00721F41 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
-		909C25112F125AE400721F41 /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Player+CoreDataClass.swift"; path = "../../CoreData/Player+CoreDataClass.swift"; sourceTree = "<group>"; };
-		909C25122F125AE400721F41 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Player+CoreDataProperties.swift"; path = "../../CoreData/Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		909C25132F125AE400721F41 /* Roll+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Roll+CoreDataClass.swift"; path = "../../CoreData/Roll+CoreDataClass.swift"; sourceTree = "<group>"; };
-		909C25142F125AE400721F41 /* Roll+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Roll+CoreDataProperties.swift"; path = "../../CoreData/Roll+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		909C25112F125AE400721F41 /* PlayerCDModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerCDModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		909C25122F125AE400721F41 /* PlayerCDModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerCDModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		909C25132F125AE400721F41 /* Roll+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Roll+CoreDataClass.swift"; sourceTree = "<group>"; };
+		909C25142F125AE400721F41 /* Roll+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Roll+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		909C25192F125B2300721F41 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		909C251C2F12879200721F41 /* GameScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenVC.swift; sourceTree = "<group>"; };
 		90A8A20F2F155B3800026A80 /* PlayerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCollectionCell.swift; sourceTree = "<group>"; };
@@ -75,19 +93,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		907CAFE12F1F45F20071FD55 /* Models */ = {
+		9073C3062F210C6800914AE7 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				907CAFE32F1F47040071FD55 /* PlayerModel.swift */,
+				909C25142F125AE400721F41 /* Roll+CoreDataProperties.swift */,
+				909C25132F125AE400721F41 /* Roll+CoreDataClass.swift */,
+				909C25122F125AE400721F41 /* PlayerCDModel+CoreDataProperties.swift */,
+				909C25112F125AE400721F41 /* PlayerCDModel+CoreDataClass.swift */,
+				909C25042F12595B00721F41 /* CoreDataModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		9073C3072F210C7600914AE7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
 				907CAFE52F1F48150071FD55 /* RollModel.swift */,
+				907CAFE32F1F47040071FD55 /* PlayerModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		9073C3082F210D6000914AE7 /* Infastructure */ = {
+			isa = PBXGroup;
+			children = (
+				9073C3092F210D6A00914AE7 /* CoreData */,
+			);
+			path = Infastructure;
+			sourceTree = "<group>";
+		};
+		9073C3092F210D6A00914AE7 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				909C25192F125B2300721F41 /* CoreDataManager.swift */,
+				9073C30F2F21192300914AE7 /* CDManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		9073C30A2F210E0700914AE7 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9073C30D2F21157400914AE7 /* PlayerMapper.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		907CAFE12F1F45F20071FD55 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				9073C3072F210C7600914AE7 /* Models */,
+				9073C3062F210C6800914AE7 /* CoreData */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		907CAFE72F1F49940071FD55 /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
-				907CAFE82F1F49A20071FD55 /* PlayerMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -95,17 +158,23 @@
 		907CAFEA2F1F59B70071FD55 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				907CAFEC2F1F5BF50071FD55 /* PlayerRepository.swift */,
+				907CAFEC2F1F5BF50071FD55 /* CreatePlayerRepo.swift */,
+				908EB93E2F20EE40001B2D69 /* FetchPlayerRepo.swift */,
+				908EB9402F20EE52001B2D69 /* FetchAllPlayersRepo.swift */,
+				908EB9422F20EE62001B2D69 /* DeletePlayerRepo.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		907CAFEB2F1F59C10071FD55 /* UseCases */ = {
+		907CAFEB2F1F59C10071FD55 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
 				907CAFEE2F1F5C740071FD55 /* CreatePlayerUseCase.swift */,
+				908EB9382F20EA3E001B2D69 /* FetchPlayerUseCase.swift */,
+				908EB93A2F20EABD001B2D69 /* FetchAllPlayersUseCase.swift */,
+				908EB93C2F20EB20001B2D69 /* DeletePlayerUseCase.swift */,
 			);
-			path = UseCases;
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 		907D5B4B2F0A2C2100ABBFAC /* System */ = {
@@ -136,6 +205,42 @@
 			path = StartScreen;
 			sourceTree = "<group>";
 		};
+		908EB9442F20F14D001B2D69 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				907CAFE12F1F45F20071FD55 /* Entities */,
+				907CAFEB2F1F59C10071FD55 /* UseCase */,
+				907CAFEA2F1F59B70071FD55 /* Repositories */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		908EB9452F20FABA001B2D69 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9073C30A2F210E0700914AE7 /* CoreData */,
+				908EB9462F20FAD7001B2D69 /* DataSource */,
+				908EB9482F20FB08001B2D69 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		908EB9462F20FAD7001B2D69 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				908EB9492F20FB4C001B2D69 /* PlayerDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		908EB9482F20FB08001B2D69 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				908EB94B2F20FC69001B2D69 /* PlayerRepoImpl.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		909039172F09379600388B42 = {
 			isa = PBXGroup;
 			children = (
@@ -155,11 +260,10 @@
 		909039222F09379600388B42 /* project123 */ = {
 			isa = PBXGroup;
 			children = (
-				907CAFEB2F1F59C10071FD55 /* UseCases */,
-				907CAFEA2F1F59B70071FD55 /* Repositories */,
+				9073C3082F210D6000914AE7 /* Infastructure */,
+				908EB9452F20FABA001B2D69 /* Data */,
+				908EB9442F20F14D001B2D69 /* Domain */,
 				907CAFE72F1F49940071FD55 /* Mapper */,
-				907CAFE12F1F45F20071FD55 /* Models */,
-				909C250F2F125A6100721F41 /* Storage */,
 				90AFFD732F110AEA00CE09FC /* CustomElements */,
 				907D5B4D2F0A2C6C00ABBFAC /* Modules */,
 				907D5B4B2F0A2C2100ABBFAC /* System */,
@@ -196,27 +300,6 @@
 				909039472F095FE500388B42 /* FontProvider.swift */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		909C250F2F125A6100721F41 /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				909C25102F125A6900721F41 /* Models */,
-				909C25042F12595B00721F41 /* CoreDataModel.xcdatamodeld */,
-				909C25192F125B2300721F41 /* CoreDataManager.swift */,
-			);
-			path = Storage;
-			sourceTree = "<group>";
-		};
-		909C25102F125A6900721F41 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				909C25112F125AE400721F41 /* Player+CoreDataClass.swift */,
-				909C25122F125AE400721F41 /* Player+CoreDataProperties.swift */,
-				909C25132F125AE400721F41 /* Roll+CoreDataClass.swift */,
-				909C25142F125AE400721F41 /* Roll+CoreDataProperties.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		909C251B2F12876400721F41 /* GameScreen */ = {
@@ -319,24 +402,33 @@
 				909C251D2F12879200721F41 /* GameScreenVC.swift in Sources */,
 				909C25172F125AE400721F41 /* Roll+CoreDataClass.swift in Sources */,
 				909039482F095FE500388B42 /* FontProvider.swift in Sources */,
+				908EB9412F20EE52001B2D69 /* FetchAllPlayersRepo.swift in Sources */,
 				909C25182F125AE400721F41 /* Roll+CoreDataProperties.swift in Sources */,
+				908EB94C2F20FC69001B2D69 /* PlayerRepoImpl.swift in Sources */,
+				908EB9432F20EE62001B2D69 /* DeletePlayerRepo.swift in Sources */,
 				90AB649A2F0FF30F00CEF1E9 /* PlayerCell.swift in Sources */,
+				908EB93D2F20EB20001B2D69 /* DeletePlayerUseCase.swift in Sources */,
 				90AFFD722F10FBAC00CE09FC /* AddPlayerVC.swift in Sources */,
 				9090393C2F0951C200388B42 /* Colors.swift in Sources */,
-				907CAFE92F1F49A20071FD55 /* PlayerMapper.swift in Sources */,
 				909039282F09379600388B42 /* StartViewController.swift in Sources */,
 				907CAFE62F1F48150071FD55 /* RollModel.swift in Sources */,
-				909C25162F125AE400721F41 /* Player+CoreDataProperties.swift in Sources */,
+				909C25162F125AE400721F41 /* PlayerCDModel+CoreDataProperties.swift in Sources */,
 				909C25062F12595C00721F41 /* CoreDataModel.xcdatamodeld in Sources */,
-				907CAFED2F1F5BF50071FD55 /* PlayerRepository.swift in Sources */,
-				909C25152F125AE400721F41 /* Player+CoreDataClass.swift in Sources */,
+				907CAFED2F1F5BF50071FD55 /* CreatePlayerRepo.swift in Sources */,
+				9073C3102F21192300914AE7 /* CDManager.swift in Sources */,
+				9073C30E2F21157400914AE7 /* PlayerMapper.swift in Sources */,
+				909C25152F125AE400721F41 /* PlayerCDModel+CoreDataClass.swift in Sources */,
 				907CAFE42F1F47040071FD55 /* PlayerModel.swift in Sources */,
+				908EB93F2F20EE40001B2D69 /* FetchPlayerRepo.swift in Sources */,
 				909039242F09379600388B42 /* AppDelegate.swift in Sources */,
 				907CAFEF2F1F5C740071FD55 /* CreatePlayerUseCase.swift in Sources */,
+				908EB94A2F20FB4C001B2D69 /* PlayerDataSource.swift in Sources */,
+				908EB93B2F20EABD001B2D69 /* FetchAllPlayersUseCase.swift in Sources */,
 				90AFFD752F110C0F00CE09FC /* AppButtonFactory.swift in Sources */,
 				909C251A2F125B2300721F41 /* CoreDataManager.swift in Sources */,
 				90A8A2102F155B3800026A80 /* PlayerCollectionCell.swift in Sources */,
 				909039262F09379600388B42 /* SceneDelegate.swift in Sources */,
+				908EB9392F20EA3E001B2D69 /* FetchPlayerUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

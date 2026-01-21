@@ -13,3 +13,5 @@ import CoreData
 public class Roll: NSManagedObject {
 
 }
+
+

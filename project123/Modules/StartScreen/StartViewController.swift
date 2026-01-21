@@ -52,7 +52,7 @@ class StartViewController: UIViewController {
         return button
     }()
     
-    var dataSource: [Player] = []
+    var dataSource: [PlayerCDModel] = []
     lazy var dataManager = CoreDataManager.shared
     
     override func viewDidLoad() {
@@ -205,7 +205,7 @@ extension StartViewController {
     }
     
     private func loadPlayers() {
-        let playerFetchRequest = Player.fetchRequest()
+        let playerFetchRequest = PlayerCDModel.fetchRequest()
         do {
             dataSource = try dataManager.viewContext.fetch(playerFetchRequest)
             table.reloadData()
@@ -217,9 +217,9 @@ extension StartViewController {
     
     private func loadPlayer(_ name: String?) {
         guard let name = name, !name.isEmpty else { return }
-        let player = Player(context: dataManager.viewContext)
+        let player = PlayerCDModel(context: dataManager.viewContext)
         player.name = name
-        player.id = UUID()
+        player.id = UUID().uuidString
         player.score = 0
         dataSource.append(player)
         table.reloadData()

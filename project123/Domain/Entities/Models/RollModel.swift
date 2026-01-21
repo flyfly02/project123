@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RollModel {
-    let id: UUID
+struct RollModel: Equatable, Hashable {
+    let id: String = UUID().uuidString
     let value: Int
 }

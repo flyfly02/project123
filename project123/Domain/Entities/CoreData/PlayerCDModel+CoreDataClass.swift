@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Player)
-public class Player: NSManagedObject {
+@objc(PlayerCDModel)
+public class PlayerCDModel: NSManagedObject {
 
 }
