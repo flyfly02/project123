@@ -41,6 +41,8 @@
 		90AB649A2F0FF30F00CEF1E9 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */; };
 		90AFFD722F10FBAC00CE09FC /* AddPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD712F10FBAB00CE09FC /* AddPlayerVC.swift */; };
 		90AFFD752F110C0F00CE09FC /* AppButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD742F110C0F00CE09FC /* AppButtonFactory.swift */; };
+		90B8A8452F214FDA005F56AB /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8A8442F214FDA005F56AB /* PersistentContainer.swift */; };
+		90B8A8482F2150F2005F56AB /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8A8472F2150F2005F56AB /* Assembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,8 @@
 		90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		90AFFD712F10FBAB00CE09FC /* AddPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerVC.swift; sourceTree = "<group>"; };
 		90AFFD742F110C0F00CE09FC /* AppButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButtonFactory.swift; sourceTree = "<group>"; };
+		90B8A8442F214FDA005F56AB /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
+		90B8A8472F2150F2005F56AB /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 			children = (
 				909C25192F125B2300721F41 /* CoreDataManager.swift */,
 				9073C30F2F21192300914AE7 /* CDManager.swift */,
+				90B8A8442F214FDA005F56AB /* PersistentContainer.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 		909039222F09379600388B42 /* project123 */ = {
 			isa = PBXGroup;
 			children = (
+				90B8A8462F2150E3005F56AB /* Assembly */,
 				9073C3082F210D6000914AE7 /* Infastructure */,
 				908EB9452F20FABA001B2D69 /* Data */,
 				908EB9442F20F14D001B2D69 /* Domain */,
@@ -325,6 +331,14 @@
 				90AFFD742F110C0F00CE09FC /* AppButtonFactory.swift */,
 			);
 			path = CustomElements;
+			sourceTree = "<group>";
+		};
+		90B8A8462F2150E3005F56AB /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				90B8A8472F2150F2005F56AB /* Assembly.swift */,
+			);
+			path = Assembly;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,10 +417,12 @@
 				909C25172F125AE400721F41 /* Roll+CoreDataClass.swift in Sources */,
 				909039482F095FE500388B42 /* FontProvider.swift in Sources */,
 				908EB9412F20EE52001B2D69 /* FetchAllPlayersRepo.swift in Sources */,
+				90B8A8452F214FDA005F56AB /* PersistentContainer.swift in Sources */,
 				909C25182F125AE400721F41 /* Roll+CoreDataProperties.swift in Sources */,
 				908EB94C2F20FC69001B2D69 /* PlayerRepoImpl.swift in Sources */,
 				908EB9432F20EE62001B2D69 /* DeletePlayerRepo.swift in Sources */,
 				90AB649A2F0FF30F00CEF1E9 /* PlayerCell.swift in Sources */,
+				90B8A8482F2150F2005F56AB /* Assembly.swift in Sources */,
 				908EB93D2F20EB20001B2D69 /* DeletePlayerUseCase.swift in Sources */,
 				90AFFD722F10FBAC00CE09FC /* AddPlayerVC.swift in Sources */,
 				9090393C2F0951C200388B42 /* Colors.swift in Sources */,
