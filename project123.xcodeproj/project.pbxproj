@@ -29,6 +29,7 @@
 		9090393C2F0951C200388B42 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9090393B2F0951C200388B42 /* Colors.swift */; };
 		909039482F095FE500388B42 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909039472F095FE500388B42 /* FontProvider.swift */; };
 		9090394E2F09656E00388B42 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9090394D2F09656E00388B42 /* Nunito-ExtraBold.ttf */; };
+		90990C9C2F22724D002AF60A /* StartVcViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90990C9B2F22724D002AF60A /* StartVcViewModel.swift */; };
 		909C25062F12595C00721F41 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 909C25042F12595B00721F41 /* CoreDataModel.xcdatamodeld */; };
 		909C25152F125AE400721F41 /* PlayerCDModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25112F125AE400721F41 /* PlayerCDModel+CoreDataClass.swift */; };
 		909C25162F125AE400721F41 /* PlayerCDModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25122F125AE400721F41 /* PlayerCDModel+CoreDataProperties.swift */; };
@@ -43,6 +44,7 @@
 		90AFFD752F110C0F00CE09FC /* AppButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFFD742F110C0F00CE09FC /* AppButtonFactory.swift */; };
 		90B8A8452F214FDA005F56AB /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8A8442F214FDA005F56AB /* PersistentContainer.swift */; };
 		90B8A8482F2150F2005F56AB /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8A8472F2150F2005F56AB /* Assembly.swift */; };
+		90FFF2E82F2283E8002801BB /* AddPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FFF2E72F2283E8002801BB /* AddPlayerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,7 @@
 		9090393B2F0951C200388B42 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		909039472F095FE500388B42 /* FontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontProvider.swift; sourceTree = "<group>"; };
 		9090394D2F09656E00388B42 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		90990C9B2F22724D002AF60A /* StartVcViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVcViewModel.swift; sourceTree = "<group>"; };
 		909C25052F12595B00721F41 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		909C25112F125AE400721F41 /* PlayerCDModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerCDModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		909C25122F125AE400721F41 /* PlayerCDModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerCDModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -83,7 +86,8 @@
 		90AFFD712F10FBAB00CE09FC /* AddPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerVC.swift; sourceTree = "<group>"; };
 		90AFFD742F110C0F00CE09FC /* AppButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButtonFactory.swift; sourceTree = "<group>"; };
 		90B8A8442F214FDA005F56AB /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
-		90B8A8472F2150F2005F56AB /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		90B8A8472F2150F2005F56AB /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		90FFF2E72F2283E8002801BB /* AddPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +210,7 @@
 			children = (
 				909039272F09379600388B42 /* StartViewController.swift */,
 				90AB64992F0FF30F00CEF1E9 /* PlayerCell.swift */,
+				90990C9B2F22724D002AF60A /* StartVcViewModel.swift */,
 			);
 			path = StartScreen;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				90AFFD712F10FBAB00CE09FC /* AddPlayerVC.swift */,
+				90FFF2E72F2283E8002801BB /* AddPlayerViewModel.swift */,
 			);
 			path = AddPlayerScreen;
 			sourceTree = "<group>";
@@ -440,6 +446,8 @@
 				907CAFEF2F1F5C740071FD55 /* CreatePlayerUseCase.swift in Sources */,
 				908EB94A2F20FB4C001B2D69 /* PlayerDataSource.swift in Sources */,
 				908EB93B2F20EABD001B2D69 /* FetchAllPlayersUseCase.swift in Sources */,
+				90FFF2E82F2283E8002801BB /* AddPlayerViewModel.swift in Sources */,
+				90990C9C2F22724D002AF60A /* StartVcViewModel.swift in Sources */,
 				90AFFD752F110C0F00CE09FC /* AppButtonFactory.swift in Sources */,
 				909C251A2F125B2300721F41 /* CoreDataManager.swift in Sources */,
 				90A8A2102F155B3800026A80 /* PlayerCollectionCell.swift in Sources */,
