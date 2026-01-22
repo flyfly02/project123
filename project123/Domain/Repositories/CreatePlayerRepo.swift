@@ -8,6 +8,6 @@
 import Foundation
 
 protocol CreatePlayerRepo {
-    func createPlayer(_ player: PlayerModel)
+    func createPlayer(_ player: PlayerModel) -> PlayerModel
 }
 

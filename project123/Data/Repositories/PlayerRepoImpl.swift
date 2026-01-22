@@ -12,7 +12,7 @@ final class PlayerRepoImpl:CreatePlayerRepo, FetchPlayerRepo, FetchAllPlayersRep
     init(dataSource: PlayerDataSource) {
         self.dataSource = dataSource
     }
-    func createPlayer(_ player: PlayerModel) {
+    func createPlayer(_ player: PlayerModel) -> PlayerModel {
         dataSource.createPlayer(player)
     }
     

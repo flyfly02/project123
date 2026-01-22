@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PlayerDataSource {
-    func createPlayer(_ player: PlayerModel)
+    func createPlayer(_ player: PlayerModel) -> PlayerModel
     func fetchPlayer(_ id: String) -> PlayerModel
     func fetchAllPlayers() -> [PlayerModel]
     func deletePlayer(_ id:String)

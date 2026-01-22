@@ -13,9 +13,11 @@ class CDManager: PlayerDataSource {
     init(_ context: NSManagedObjectContext) {
         self.context = context
     }
-    func createPlayer(_ player: PlayerModel) {
+    func createPlayer(_ player: PlayerModel)-> PlayerModel {
         _ = PlayerMapper.toCDModel(player, context)
         try? context.save()
+        return player
+ 
     }
     
     func fetchPlayer(_ id: String) -> PlayerModel {

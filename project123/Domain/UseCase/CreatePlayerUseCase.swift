@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CreatePlayerUseCase {
-    func execute(_ player: PlayerModel)
+    func execute(_ name: String) -> PlayerModel
 }
 
 final class CreatePlayerUseCaseImpl: CreatePlayerUseCase {
@@ -16,8 +16,10 @@ final class CreatePlayerUseCaseImpl: CreatePlayerUseCase {
     init(repo: CreatePlayerRepo) {
         self.repo = repo
     }
-    func execute(_ player: PlayerModel) {
-        repo.createPlayer(player)
+    func execute(_ name: String) -> PlayerModel {
+        let player = repo.createPlayer(PlayerModel(name: name, score: 0))
+
+        return player
     }
 }
 

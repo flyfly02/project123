@@ -18,7 +18,8 @@ class AddPlayerViewModel {
         self.createUseCase = createUseCase
     }
     
-    func createUser() {
-        createUseCase.execute(PlayerModel(name: name, score: 0))
+    func createUser() -> PlayerModel {
+        let player = createUseCase.execute(name)
+        return player
     }
 }
