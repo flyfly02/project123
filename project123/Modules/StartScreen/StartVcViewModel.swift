@@ -28,6 +28,7 @@ class StartVcViewModel {
     
     func deletePlayer(_ id: String) {
         deleteUseCase.execute(id)
+        fetchPlayer()
     }
     
 }

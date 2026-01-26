@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class GameScreenVC: UIViewController {
     
+    private let viewModel = Assembly.shared.createGameScreenViewModel()
+    private var cancellables = Set<AnyCancellable>()
     private var isGameIsOn: Bool = false
     private lazy var leftNewGameButton = AppButtonFactory.createBarItem("New Game", nil, nil)
     private lazy var rightResultsButton = AppButtonFactory.createBarItem("Results", nil, nil)
@@ -56,6 +59,7 @@ class GameScreenVC: UIViewController {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.dataSource = self
         collection.register(PlayerCollectionCell.self, forCellWithReuseIdentifier: "PlayerCell")
+        
         collection.backgroundColor = .clear
         collection.showsHorizontalScrollIndicator = false
         collection.translatesAutoresizingMaskIntoConstraints = false
@@ -69,6 +73,7 @@ class GameScreenVC: UIViewController {
         button.contentHorizontalAlignment = .fill
         button.contentVerticalAlignment = .fill
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(undoButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -111,6 +116,7 @@ class GameScreenVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.fetchPlayers()
         setupUI()
     }
     
@@ -200,11 +206,19 @@ extension GameScreenVC {
 
 extension GameScreenVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        2
+        viewModel.players.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayerCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayerCell", for: indexPath) as! PlayerCollectionCell
+        cell.playerName.text = viewModel.players[indexPath.row].name
+        cell.playerScore.text = String(viewModel.players[indexPath.row].score)
         return cell
+    }
+}
+
+extension GameScreenVC {
+    @objc private func undoButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

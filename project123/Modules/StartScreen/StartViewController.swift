@@ -7,11 +7,13 @@
 
 import UIKit
 import CoreData
+import Combine
 
 class StartViewController: UIViewController {
     
     private var tableHeightConstraint: NSLayoutConstraint!
-    
+    private let viewModel = Assembly.shared.createStartVcViewModel()
+    private var cancellables = Set<AnyCancellable>()
     private lazy var titletext: UILabel = {
         let title = UILabel()
         title.font = .nunitoExtraBold(size: 36)
@@ -52,8 +54,7 @@ class StartViewController: UIViewController {
         return button
     }()
     
-    var dataSource: [PlayerCDModel] = []
-    lazy var dataManager = CoreDataManager.shared
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +63,28 @@ class StartViewController: UIViewController {
         view.addSubview(startGameButton)
         view.addSubview(table)
         setupConstraints()
-        loadPlayers()
+        setupBindings()
+        viewModel.fetchPlayer()
         updateTableHeight()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchPlayer()
+    }
+}
+
+extension StartViewController {
+    private func setupBindings() {
+        viewModel.$players
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] players in
+                self?.table.reloadData()
+                self?.updateTableHeight()
+                self?.updateStartGameButtonCondition()
+            }
+            .store(in: &cancellables)
     }
 }
 
@@ -112,13 +132,13 @@ extension StartViewController {
 
 extension StartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dataSource.count + 1
+        viewModel.players.count + 1
 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PlayerCell
-        let isAddCell = indexPath.row == dataSource.count
+        let isAddCell = indexPath.row == viewModel.players.count
         cell.configure(isAddCell)
         cell.onTableButtonTapped = { [weak self] in
                guard let self = self else { return }
@@ -131,8 +151,8 @@ extension StartViewController: UITableViewDataSource {
            }
         
 
-        if !isAddCell && indexPath.row < dataSource.count {
-            cell.cellName.text = dataSource[indexPath.row].name
+        if !isAddCell && indexPath.row < viewModel.players.count {
+            cell.cellName.text = viewModel.players[indexPath.row].name
         }
         
         cell.backgroundColor = .appBackBlack
@@ -185,47 +205,14 @@ extension StartViewController: UITableViewDelegate {
 extension StartViewController {
     private func newPlayer() {
            let addPlayerVC = AddPlayerVC()
-           addPlayerVC.onAddTapped = { [weak self] name in
-               self?.loadPlayer(name)
-
-           }
            navigationController?.pushViewController(addPlayerVC, animated: true)
        }
 
     private func deletePlayer(at index: Int) {
-        if index < dataSource.count {
-            let deletedPlayer = dataSource[index]
-            dataManager.viewContext.delete(deletedPlayer)
-            dataSource.remove(at: index)
-            table.reloadData()
-            updateTableHeight()
-            updateStartGameButtonCondition()
-            dataManager.saveContext()
+        if index < viewModel.players.count {
+            let deletedPlayer = viewModel.players[index]
+            viewModel.deletePlayer(deletedPlayer.id)
         }
-    }
-    
-    private func loadPlayers() {
-        let playerFetchRequest = PlayerCDModel.fetchRequest()
-        do {
-            dataSource = try dataManager.viewContext.fetch(playerFetchRequest)
-            table.reloadData()
-            updateStartGameButtonCondition()
-        } catch {
-            print("Error is: \(error)")
-        }
-    }
-    
-    private func loadPlayer(_ name: String?) {
-        guard let name = name, !name.isEmpty else { return }
-        let player = PlayerCDModel(context: dataManager.viewContext)
-        player.name = name
-        player.id = UUID().uuidString
-        player.score = 0
-        dataSource.append(player)
-        table.reloadData()
-        updateTableHeight()
-        updateStartGameButtonCondition()
-        dataManager.saveContext()
     }
 }
 
@@ -236,7 +223,7 @@ extension StartViewController {
     }
     
     private func updateStartGameButtonCondition() {
-        if dataSource.isEmpty {
+        if viewModel.players.isEmpty {
             startGameButton.isEnabled = false
         } else {
             startGameButton.isEnabled = true      

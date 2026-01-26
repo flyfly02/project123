@@ -43,6 +43,7 @@ class CDManager: PlayerDataSource {
         let request = PlayerCDModel.fetchRequest()
         if let players = try? context.fetch(request), let player = players.first(where: {$0.id == id}) {
             context.delete(player)
+            try? context.save()
         }
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9073C30E2F21157400914AE7 /* PlayerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073C30D2F21157400914AE7 /* PlayerMapper.swift */; };
 		9073C3102F21192300914AE7 /* CDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073C30F2F21192300914AE7 /* CDManager.swift */; };
+		907A4BA42F27C52400F3046C /* GameScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907A4BA32F27C52400F3046C /* GameScreenViewModel.swift */; };
 		907CAFE42F1F47040071FD55 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFE32F1F47040071FD55 /* PlayerModel.swift */; };
 		907CAFE62F1F48150071FD55 /* RollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFE52F1F48150071FD55 /* RollModel.swift */; };
 		907CAFED2F1F5BF50071FD55 /* CreatePlayerRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFEC2F1F5BF50071FD55 /* CreatePlayerRepo.swift */; };
@@ -35,7 +36,6 @@
 		909C25162F125AE400721F41 /* PlayerCDModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25122F125AE400721F41 /* PlayerCDModel+CoreDataProperties.swift */; };
 		909C25172F125AE400721F41 /* Roll+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25132F125AE400721F41 /* Roll+CoreDataClass.swift */; };
 		909C25182F125AE400721F41 /* Roll+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25142F125AE400721F41 /* Roll+CoreDataProperties.swift */; };
-		909C251A2F125B2300721F41 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C25192F125B2300721F41 /* CoreDataManager.swift */; };
 		909C251D2F12879200721F41 /* GameScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C251C2F12879200721F41 /* GameScreenVC.swift */; };
 		90A8A2102F155B3800026A80 /* PlayerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8A20F2F155B3800026A80 /* PlayerCollectionCell.swift */; };
 		90A8A2122F155E9000026A80 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90A8A2112F155E9000026A80 /* Nunito-Bold.ttf */; };
@@ -50,6 +50,7 @@
 /* Begin PBXFileReference section */
 		9073C30D2F21157400914AE7 /* PlayerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMapper.swift; sourceTree = "<group>"; };
 		9073C30F2F21192300914AE7 /* CDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDManager.swift; sourceTree = "<group>"; };
+		907A4BA32F27C52400F3046C /* GameScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenViewModel.swift; sourceTree = "<group>"; };
 		907CAFE32F1F47040071FD55 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		907CAFE52F1F48150071FD55 /* RollModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollModel.swift; sourceTree = "<group>"; };
 		907CAFEC2F1F5BF50071FD55 /* CreatePlayerRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerRepo.swift; sourceTree = "<group>"; };
@@ -78,7 +79,6 @@
 		909C25122F125AE400721F41 /* PlayerCDModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerCDModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		909C25132F125AE400721F41 /* Roll+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Roll+CoreDataClass.swift"; sourceTree = "<group>"; };
 		909C25142F125AE400721F41 /* Roll+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Roll+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		909C25192F125B2300721F41 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		909C251C2F12879200721F41 /* GameScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenVC.swift; sourceTree = "<group>"; };
 		90A8A20F2F155B3800026A80 /* PlayerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCollectionCell.swift; sourceTree = "<group>"; };
 		90A8A2112F155E9000026A80 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -133,7 +133,6 @@
 		9073C3092F210D6A00914AE7 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				909C25192F125B2300721F41 /* CoreDataManager.swift */,
 				9073C30F2F21192300914AE7 /* CDManager.swift */,
 				90B8A8442F214FDA005F56AB /* PersistentContainer.swift */,
 			);
@@ -318,6 +317,7 @@
 			children = (
 				909C251C2F12879200721F41 /* GameScreenVC.swift */,
 				90A8A20F2F155B3800026A80 /* PlayerCollectionCell.swift */,
+				907A4BA32F27C52400F3046C /* GameScreenViewModel.swift */,
 			);
 			path = GameScreen;
 			sourceTree = "<group>";
@@ -443,13 +443,13 @@
 				907CAFE42F1F47040071FD55 /* PlayerModel.swift in Sources */,
 				908EB93F2F20EE40001B2D69 /* FetchPlayerRepo.swift in Sources */,
 				909039242F09379600388B42 /* AppDelegate.swift in Sources */,
+				907A4BA42F27C52400F3046C /* GameScreenViewModel.swift in Sources */,
 				907CAFEF2F1F5C740071FD55 /* CreatePlayerUseCase.swift in Sources */,
 				908EB94A2F20FB4C001B2D69 /* PlayerDataSource.swift in Sources */,
 				908EB93B2F20EABD001B2D69 /* FetchAllPlayersUseCase.swift in Sources */,
 				90FFF2E82F2283E8002801BB /* AddPlayerViewModel.swift in Sources */,
 				90990C9C2F22724D002AF60A /* StartVcViewModel.swift in Sources */,
 				90AFFD752F110C0F00CE09FC /* AppButtonFactory.swift in Sources */,
-				909C251A2F125B2300721F41 /* CoreDataManager.swift in Sources */,
 				90A8A2102F155B3800026A80 /* PlayerCollectionCell.swift in Sources */,
 				909039262F09379600388B42 /* SceneDelegate.swift in Sources */,
 				908EB9392F20EA3E001B2D69 /* FetchPlayerUseCase.swift in Sources */,

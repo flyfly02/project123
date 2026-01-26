@@ -25,8 +25,16 @@ class Assembly {
     
      func createAddPlayerViewModel() -> AddPlayerViewModel {
         let datasourceImpl = CDManager(persistentController.persistentContainer.viewContext)
-        let createPlayerRepoImpl = PlayerRepoImpl(dataSource: datasourceImpl)
-        let addPlayerUseCase = CreatePlayerUseCaseImpl(repo: createPlayerRepoImpl)
-        return AddPlayerViewModel(createUseCase: addPlayerUseCase)
+        let fetchAllPlayersRepo = PlayerRepoImpl(dataSource: datasourceImpl)
+        let fetchAllPlayersUseCase = FetchAllPlayersUseCaseImpl(repo: fetchAllPlayersRepo)
+        let createUseCase = CreatePlayerUseCaseImpl(repo: fetchAllPlayersRepo)
+        return AddPlayerViewModel(createUseCase: createUseCase, fetchAllUseCase: fetchAllPlayersUseCase)
+    }
+    
+    func createGameScreenViewModel() -> GameScreenViewModel {
+        let datasourceImpl = CDManager(persistentController.persistentContainer.viewContext)
+        let fetchAllPlayersRepo = PlayerRepoImpl(dataSource: datasourceImpl)
+        let fetchAllPlayersUseCase = FetchAllPlayersUseCaseImpl(repo: fetchAllPlayersRepo)
+        return GameScreenViewModel(fetchAllPlayerUseCase: fetchAllPlayersUseCase)
     }
 }

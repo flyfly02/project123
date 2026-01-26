@@ -10,20 +10,18 @@ import UIKit
 
 class PlayerCollectionCell: UICollectionViewCell {
     
-    private lazy var playerName: UILabel = {
+     lazy var playerName: UILabel = {
         let label = UILabel()
         label.textColor = .appCollectionPlayerName
         label.font = .nunitoExtraBold(size: 28)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Ilya"
         return label
     }()
     
-    private lazy var playerScore: UILabel = {
+     lazy var playerScore: UILabel = {
         let label = UILabel()
         label.textColor = .appCollectionPlayerName
         label.font = .nunitoBold(size: 41)
-        label.text = "15"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class AddPlayerVC: UIViewController {
     
-    var onAddTapped: ((String?) -> Void)?
+    private let viewModel = Assembly.shared.createAddPlayerViewModel()
+    private var cancellables = Set<AnyCancellable>()
     private lazy var titletext: UILabel = {
         let title = UILabel()
         title.font = .nunitoExtraBold(size: 36)
@@ -41,6 +43,10 @@ class AddPlayerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUi()
+        addPlayerTextField.textPublisher
+            .assign(to: \.name, on: viewModel)
+                   .store(in: &cancellables)
+           
     }
     
     private func setupUi() {
@@ -54,6 +60,8 @@ class AddPlayerVC: UIViewController {
         
         
     }
+    
+   
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -74,13 +82,18 @@ extension AddPlayerVC {
     }
     
     @objc private func addTapped() {
-        let text = addPlayerTextField.text ?? ""
-        let trimmedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmedText.isEmpty else {return}
-        self.navigationController?.popViewController(animated: true)
-        self.onAddTapped?(trimmedText)
-        
+        if  viewModel.createUser() != nil {
+                navigationController?.popViewController(animated: true)
+            }
+        }
+}
 
+extension UITextField {
+    var textPublisher: AnyPublisher<String, Never> {
+        NotificationCenter.default
+            .publisher(for: UITextField.textDidChangeNotification, object: self)
+            .compactMap { ($0.object as? UITextField)?.text }
+            .eraseToAnyPublisher()
     }
 }
 
