@@ -35,6 +35,7 @@ class Assembly {
         let datasourceImpl = CDManager(persistentController.persistentContainer.viewContext)
         let fetchAllPlayersRepo = PlayerRepoImpl(dataSource: datasourceImpl)
         let fetchAllPlayersUseCase = FetchAllPlayersUseCaseImpl(repo: fetchAllPlayersRepo)
-        return GameScreenViewModel(fetchAllPlayerUseCase: fetchAllPlayersUseCase)
+        let updatePlayerScoreUseCase = UpdatePlayerScoreUseCaseImpl(repo: fetchAllPlayersRepo)
+        return GameScreenViewModel(fetchAllPlayerUseCase: fetchAllPlayersUseCase, updateScoreUseCase: updatePlayerScoreUseCase)
     }
 }

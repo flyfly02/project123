@@ -10,6 +10,8 @@
 		9073C30E2F21157400914AE7 /* PlayerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073C30D2F21157400914AE7 /* PlayerMapper.swift */; };
 		9073C3102F21192300914AE7 /* CDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073C30F2F21192300914AE7 /* CDManager.swift */; };
 		907A4BA42F27C52400F3046C /* GameScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907A4BA32F27C52400F3046C /* GameScreenViewModel.swift */; };
+		907A4BA62F27D44200F3046C /* UpdatePlayerScoreUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907A4BA52F27D44200F3046C /* UpdatePlayerScoreUseCase.swift */; };
+		907A4BA82F27DDC100F3046C /* UpdatePlayerRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907A4BA72F27DDC100F3046C /* UpdatePlayerRepo.swift */; };
 		907CAFE42F1F47040071FD55 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFE32F1F47040071FD55 /* PlayerModel.swift */; };
 		907CAFE62F1F48150071FD55 /* RollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFE52F1F48150071FD55 /* RollModel.swift */; };
 		907CAFED2F1F5BF50071FD55 /* CreatePlayerRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFEC2F1F5BF50071FD55 /* CreatePlayerRepo.swift */; };
@@ -51,6 +53,8 @@
 		9073C30D2F21157400914AE7 /* PlayerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMapper.swift; sourceTree = "<group>"; };
 		9073C30F2F21192300914AE7 /* CDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDManager.swift; sourceTree = "<group>"; };
 		907A4BA32F27C52400F3046C /* GameScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenViewModel.swift; sourceTree = "<group>"; };
+		907A4BA52F27D44200F3046C /* UpdatePlayerScoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePlayerScoreUseCase.swift; sourceTree = "<group>"; };
+		907A4BA72F27DDC100F3046C /* UpdatePlayerRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePlayerRepo.swift; sourceTree = "<group>"; };
 		907CAFE32F1F47040071FD55 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		907CAFE52F1F48150071FD55 /* RollModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollModel.swift; sourceTree = "<group>"; };
 		907CAFEC2F1F5BF50071FD55 /* CreatePlayerRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerRepo.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 				908EB93E2F20EE40001B2D69 /* FetchPlayerRepo.swift */,
 				908EB9402F20EE52001B2D69 /* FetchAllPlayersRepo.swift */,
 				908EB9422F20EE62001B2D69 /* DeletePlayerRepo.swift */,
+				907A4BA72F27DDC100F3046C /* UpdatePlayerRepo.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 				908EB9382F20EA3E001B2D69 /* FetchPlayerUseCase.swift */,
 				908EB93A2F20EABD001B2D69 /* FetchAllPlayersUseCase.swift */,
 				908EB93C2F20EB20001B2D69 /* DeletePlayerUseCase.swift */,
+				907A4BA52F27D44200F3046C /* UpdatePlayerScoreUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -430,9 +436,11 @@
 				90AB649A2F0FF30F00CEF1E9 /* PlayerCell.swift in Sources */,
 				90B8A8482F2150F2005F56AB /* Assembly.swift in Sources */,
 				908EB93D2F20EB20001B2D69 /* DeletePlayerUseCase.swift in Sources */,
+				907A4BA82F27DDC100F3046C /* UpdatePlayerRepo.swift in Sources */,
 				90AFFD722F10FBAC00CE09FC /* AddPlayerVC.swift in Sources */,
 				9090393C2F0951C200388B42 /* Colors.swift in Sources */,
 				909039282F09379600388B42 /* StartViewController.swift in Sources */,
+				907A4BA62F27D44200F3046C /* UpdatePlayerScoreUseCase.swift in Sources */,
 				907CAFE62F1F48150071FD55 /* RollModel.swift in Sources */,
 				909C25162F125AE400721F41 /* PlayerCDModel+CoreDataProperties.swift in Sources */,
 				909C25062F12595C00721F41 /* CoreDataModel.xcdatamodeld in Sources */,

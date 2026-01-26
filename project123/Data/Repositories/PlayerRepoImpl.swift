@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class PlayerRepoImpl:CreatePlayerRepo, FetchPlayerRepo, FetchAllPlayersRepo, DeletePlayerRepo {
+final class PlayerRepoImpl:CreatePlayerRepo, FetchPlayerRepo, FetchAllPlayersRepo, DeletePlayerRepo, UpdatePlayerRepo {
     private let dataSource: PlayerDataSource
     init(dataSource: PlayerDataSource) {
         self.dataSource = dataSource
@@ -26,6 +26,10 @@ final class PlayerRepoImpl:CreatePlayerRepo, FetchPlayerRepo, FetchAllPlayersRep
     
     func deletePlayer(_ id: String) {
         dataSource.deletePlayer(id)
+    }
+    
+    func UpdatePlayerRepo(_ id: String) {
+        dataSource.updatePlayer(id)
     }
     
 }

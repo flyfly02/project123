@@ -46,4 +46,8 @@ class CDManager: PlayerDataSource {
             try? context.save()
         }
     }
+    
+    func updatePlayer(_ id: String) {
+        <#code#>
+    }
 }

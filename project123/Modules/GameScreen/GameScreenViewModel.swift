@@ -9,10 +9,12 @@ import Foundation
 
 class GameScreenViewModel {
     @Published var players: [PlayerModel] = []
-    private var fetchAllUseCase: FetchAllPlayersUseCase
+    private let fetchAllUseCase: FetchAllPlayersUseCase
+    private let updateScoreUseCase: UpdatePlayerScoreUseCase
     
-    init(fetchAllPlayerUseCase: FetchAllPlayersUseCase) {
+    init(fetchAllPlayerUseCase: FetchAllPlayersUseCase, updateScoreUseCase: UpdatePlayerScoreUseCase ) {
         self.fetchAllUseCase = fetchAllPlayerUseCase
+        self.updateScoreUseCase = updateScoreUseCase
     }
     
     func fetchPlayers() {
