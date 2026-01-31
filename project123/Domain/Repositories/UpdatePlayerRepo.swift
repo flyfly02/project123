@@ -8,5 +8,5 @@
 import Foundation
 
 protocol UpdatePlayerRepo {
-    func UpdatePlayerRepo(_ id:String)
+    func UpdatePlayerRepo(_ player: PlayerModel) -> PlayerModel
 }

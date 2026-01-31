@@ -12,16 +12,16 @@ protocol UpdatePlayerScoreUseCase {
 }
 
 final class UpdatePlayerScoreUseCaseImpl: UpdatePlayerScoreUseCase {
-    let repo: FetchPlayerRepo
-    init(repo: FetchPlayerRepo) {
+    let repo: UpdatePlayerRepo
+    init(repo: UpdatePlayerRepo) {
         self.repo = repo
     }
     
     
     func execute(_ player: PlayerModel, _ score: Int) -> PlayerModel {
-        var player = repo.fetchPlayer(player.id)
-        player.score = score
-        return player
-    }
+            var updatedPlayer = player
+            updatedPlayer.score = score
+            return repo.UpdatePlayerRepo(updatedPlayer)
+        }
 }
 

@@ -28,8 +28,8 @@ final class PlayerRepoImpl:CreatePlayerRepo, FetchPlayerRepo, FetchAllPlayersRep
         dataSource.deletePlayer(id)
     }
     
-    func UpdatePlayerRepo(_ id: String) {
-        dataSource.updatePlayer(id)
+    func UpdatePlayerRepo(_ player: PlayerModel) -> PlayerModel {
+        dataSource.updatePlayer(player)
     }
     
 }

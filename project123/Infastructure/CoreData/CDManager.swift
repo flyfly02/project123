@@ -47,7 +47,17 @@ class CDManager: PlayerDataSource {
         }
     }
     
-    func updatePlayer(_ id: String) {
-        <#code#>
+    func updatePlayer(_ player: PlayerModel) -> PlayerModel {
+        let request = PlayerCDModel.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", player.id)
+        let results = try? context.fetch(request)
+            
+        if let playerEntity = results?.first {
+            playerEntity.name = player.name
+            playerEntity.score = player.score
+            try? context.save()
+                return PlayerMapper.toDomainModel(playerEntity)
+            }
+        return player
     }
 }

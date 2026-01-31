@@ -45,6 +45,7 @@ struct AppButtonFactory {
         }
         let attributedText = NSAttributedString(string: stringValue, attributes: attributes)
             button.setAttributedTitle(attributedText, for: .normal)
+//        button.addTarget(self, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
             
         return button
     }
@@ -59,5 +60,11 @@ struct AppButtonFactory {
         button.heightAnchor.constraint(equalToConstant: 30).isActive = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }
+}
+
+extension AppButtonFactory {
+    private func buttonTapped() -> () {
+        
     }
 }

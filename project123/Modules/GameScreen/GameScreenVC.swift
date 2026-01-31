@@ -13,6 +13,8 @@ class GameScreenVC: UIViewController {
     private let viewModel = Assembly.shared.createGameScreenViewModel()
     private var cancellables = Set<AnyCancellable>()
     private var isGameIsOn: Bool = false
+    private var gameTimer: Timer?
+    private var timerSeconds: Int = 0
     private lazy var leftNewGameButton = AppButtonFactory.createBarItem("New Game", nil, nil)
     private lazy var rightResultsButton = AppButtonFactory.createBarItem("Results", nil, nil)
     
@@ -54,10 +56,11 @@ class GameScreenVC: UIViewController {
     
     private lazy var playersCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 180, height: view.frame.height * 0.34)
+        layout.itemSize = CGSize(width: 100, height: 100)
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.dataSource = self
+        collection.delegate = self
         collection.register(PlayerCollectionCell.self, forCellWithReuseIdentifier: "PlayerCell")
         
         collection.backgroundColor = .clear
@@ -84,9 +87,13 @@ class GameScreenVC: UIViewController {
 
         var value: Int = -10
         for i in 0...4{
-            stackView.addArrangedSubview(AppButtonFactory.createChangePlayerScore(value, 55, .nunitoExtraBold(size: 25)!))
+            let button = AppButtonFactory.createChangePlayerScore(value, 55, .nunitoExtraBold(size: 25)!)
+            button.tag = value
+            button.addTarget(self, action: #selector(changeScoreButtonTapped(_:)), for: .touchUpInside)
+            stackView.addArrangedSubview(button)
             value = value + 5
         }
+
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -97,8 +104,12 @@ class GameScreenVC: UIViewController {
         stackView.distribution = .equalSpacing
         stackView.alignment = .center
         let previousButton = AppButtonFactory.createImageButton("previousImage")
+        previousButton.addTarget(self, action: #selector(scrollToPreviousPlayer), for: .touchUpInside)
         let bigChangeScoreButton = AppButtonFactory.createChangePlayerScore(10, 90, .nunitoExtraBold(size: 40)!)
+        bigChangeScoreButton.tag = 10
+        bigChangeScoreButton.addTarget(self, action: #selector(changeScoreButtonTapped(_:)), for: .touchUpInside)
         let nextButton = AppButtonFactory.createImageButton("nextImage")
+        nextButton.addTarget(self, action: #selector(scrollToNextPlayer), for: .touchUpInside)
         previousButton.widthAnchor.constraint(equalToConstant: 34).isActive = true
         previousButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         previousButton.widthAnchor.constraint(equalToConstant: 34).isActive = true
@@ -118,6 +129,15 @@ class GameScreenVC: UIViewController {
         super.viewDidLoad()
         viewModel.fetchPlayers()
         setupUI()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let layout = playersCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.invalidateLayout()
+            playersCollectionView.collectionViewLayout.invalidateLayout()
+            playersCollectionView.layoutIfNeeded()
+        }
     }
     
     private func setupUI() {
@@ -198,8 +218,42 @@ extension GameScreenVC {
     }
     
     @objc private func timerButtonTapped() {
+        if isGameIsOn {
+            stopGameTimer()
+        } else {
+            startTimer()
+        }
+        
         isGameIsOn.toggle()
         setupTimerUI(timerLabel, timerButton)
+        
+    }
+    
+    private func startTimer() {
+        updateTimerLabel()
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.0,
+                                         target: self,
+                                         selector: #selector(timerTick),
+                                         userInfo: nil,
+                                         repeats: true)
+        if let timer = gameTimer {
+                    RunLoop.current.add(timer, forMode: .common)
+        }
+    }
+    
+    @objc private func timerTick() {
+        timerSeconds += 1
+        updateTimerLabel()
+    }
+    
+    private func updateTimerLabel() {
+           let minutes = timerSeconds / 60
+           let seconds = timerSeconds % 60
+           timerLabel.text = String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    private func stopGameTimer() {
+            gameTimer?.invalidate()
     }
 
 }
@@ -220,5 +274,89 @@ extension GameScreenVC: UICollectionViewDataSource {
 extension GameScreenVC {
     @objc private func undoButtonTapped() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension GameScreenVC: UICollectionViewDelegateFlowLayout {
+    
+    // 🎯 Этот метод вызывается для КАЖДОЙ ячейки
+    func collectionView(_ collectionView: UICollectionView,
+                       layout collectionViewLayout: UICollectionViewLayout,
+                       sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        // 1. Получаем текущую высоту коллекции
+        let collectionHeight = collectionView.frame.height
+        
+        // 2. Получаем отступы из layout
+        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return CGSize(width: 200, height: 100) // Запасной вариант
+        }
+        
+        // 3. Вычисляем высоту ячейки
+        // Высота = высота коллекции - верхний отступ - нижний отступ
+        let topInset = flowLayout.sectionInset.top
+        let bottomInset = flowLayout.sectionInset.bottom
+        let cellHeight = collectionHeight - topInset - bottomInset
+        
+        // 4. Ширина ячейки = 68% от ширины экрана (как у тебя было)
+        let cellWidth = view.frame.width * 0.68
+        
+        // 5. Минимальная высота на всякий случай
+        let finalHeight = max(cellHeight, 100)
+        
+        print("📏 Высота коллекции: \(collectionHeight), Высота ячейки: \(finalHeight)")
+        
+        return CGSize(width: cellWidth, height: finalHeight)
+    }
+}
+
+extension GameScreenVC: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == playersCollectionView {
+            findCurrentCell()
+        }
+    }
+    
+    private func findCurrentCell() {
+        let centerX = playersCollectionView.contentOffset.x + playersCollectionView.frame.width / 2
+        let centerPoint = CGPoint(x: centerX, y: playersCollectionView.frame.height / 2)
+        if let indexPath = playersCollectionView.indexPathForItem(at: centerPoint) {
+            print("🎯 Текущий игрок: \(indexPath.row)")
+            viewModel.currentPlayerIndex = indexPath.row
+        }
+    }
+    
+    func scrollToPlayer(at index: Int) {
+        let indexPath = IndexPath(item: index, section: 0)
+        
+        playersCollectionView.scrollToItem(
+            at: indexPath,
+            at: .centeredHorizontally,  // Позиция на экране
+            animated: true               // С анимацией или без
+        )
+    }
+    
+    @objc private func scrollToNextPlayer() {
+        let currentInd = viewModel.currentPlayerIndex
+        if currentInd < viewModel.players.count - 1 {
+        scrollToPlayer(at: currentInd + 1)
+        }
+    }
+    
+    @objc private func scrollToPreviousPlayer() {
+        let currentInd = viewModel.currentPlayerIndex
+        if currentInd > 0 {
+        scrollToPlayer(at: currentInd - 1)
+        }
+    }
+}
+
+extension GameScreenVC {
+    @objc private func changeScoreButtonTapped(_ sender: UIButton) {
+        let value = sender.tag
+        let currentPlayer = viewModel.players[viewModel.currentPlayerIndex]
+        let newScore = currentPlayer.score + value
+        viewModel.updateScore(currentPlayer, newScore)
+        playersCollectionView.reloadData()
     }
 }

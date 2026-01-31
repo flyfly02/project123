@@ -20,7 +20,7 @@ class PlayerCollectionCell: UICollectionViewCell {
     
      lazy var playerScore: UILabel = {
         let label = UILabel()
-        label.textColor = .appCollectionPlayerName
+        label.textColor = .white
         label.font = .nunitoBold(size: 41)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
