@@ -13,4 +13,5 @@ protocol PlayerDataSource {
     func fetchAllPlayers() -> [PlayerModel]
     func deletePlayer(_ id:String)
     func updatePlayer(_ player: PlayerModel) -> PlayerModel
+    
 }

@@ -34,8 +34,19 @@ class Assembly {
     func createGameScreenViewModel() -> GameScreenViewModel {
         let datasourceImpl = CDManager(persistentController.persistentContainer.viewContext)
         let fetchAllPlayersRepo = PlayerRepoImpl(dataSource: datasourceImpl)
+        let makeRollRepo = RollRepoImpl(dataSource: datasourceImpl)
         let fetchAllPlayersUseCase = FetchAllPlayersUseCaseImpl(repo: fetchAllPlayersRepo)
         let updatePlayerScoreUseCase = UpdatePlayerScoreUseCaseImpl(repo: fetchAllPlayersRepo)
-        return GameScreenViewModel(fetchAllPlayerUseCase: fetchAllPlayersUseCase, updateScoreUseCase: updatePlayerScoreUseCase)
+        let makeRollUseCase = MakeRollUseCaseImpl(fetchRepo: makeRollRepo, updatePalyerRepo: fetchAllPlayersRepo)
+        return GameScreenViewModel(fetchAllPlayerUseCase: fetchAllPlayersUseCase, updateScoreUseCase: updatePlayerScoreUseCase, makeRollUseCase: makeRollUseCase)
     }
+    
+    func createResultsVcViewModel() -> ResultsVcViewModel {
+       let datasourceImpl = CDManager(persistentController.persistentContainer.viewContext)
+       let fetchAllPlayersRepo = PlayerRepoImpl(dataSource: datasourceImpl)
+        let fetchAllRollsRepo = RollRepoImpl(dataSource: datasourceImpl)
+       let fetchAllPlayersUseCase = FetchAllPlayersUseCaseImpl(repo: fetchAllPlayersRepo)
+       let fetchAllRollsUseCase = FetchAllRollsUseCaseImpl(fetchAllRollsRepo)
+        return ResultsVcViewModel(fetchAllPlayerUseCase: fetchAllPlayersUseCase, fetchAllRollsUSeCase: fetchAllRollsUseCase)
+   }
 }

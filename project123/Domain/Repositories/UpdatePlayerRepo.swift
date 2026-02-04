@@ -8,5 +8,6 @@
 import Foundation
 
 protocol UpdatePlayerRepo {
+    @discardableResult
     func UpdatePlayerRepo(_ player: PlayerModel) -> PlayerModel
 }

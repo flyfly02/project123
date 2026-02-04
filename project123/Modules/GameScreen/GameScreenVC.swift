@@ -16,7 +16,9 @@ class GameScreenVC: UIViewController {
     private var gameTimer: Timer?
     private var timerSeconds: Int = 0
     private lazy var leftNewGameButton = AppButtonFactory.createBarItem("New Game", nil, nil)
-    private lazy var rightResultsButton = AppButtonFactory.createBarItem("Results", nil, nil)
+    private lazy var rightResultsButton = AppButtonFactory.createBarItem("Results", self, #selector(resultsButtonTapped))
+    
+    
     
     private lazy var gameLabel: UILabel = {
         let label = UILabel()
@@ -80,6 +82,14 @@ class GameScreenVC: UIViewController {
         return button
     }()
     
+    private lazy var playersBar: UILabel = {
+        let label = UILabel()
+        label.textColor = .appBackBlack
+        label.font = .nunitoExtraBold(size: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private lazy var smallButtonsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -104,7 +114,7 @@ class GameScreenVC: UIViewController {
         stackView.distribution = .equalSpacing
         stackView.alignment = .center
         let previousButton = AppButtonFactory.createImageButton("previousImage")
-        previousButton.addTarget(self, action: #selector(scrollToPreviousPlayer), for: .touchUpInside)
+        previousButton.addTarget(self, action: #selector(scrollToFirstPlayer), for: .touchUpInside)
         let bigChangeScoreButton = AppButtonFactory.createChangePlayerScore(10, 90, .nunitoExtraBold(size: 40)!)
         bigChangeScoreButton.tag = 10
         bigChangeScoreButton.addTarget(self, action: #selector(changeScoreButtonTapped(_:)), for: .touchUpInside)
@@ -117,8 +127,6 @@ class GameScreenVC: UIViewController {
         [previousButton, bigChangeScoreButton, nextButton].forEach {
                 stackView.addArrangedSubview($0)
             }
-                                                                            
-                                                                            
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -128,6 +136,7 @@ class GameScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.fetchPlayers()
+        updatePlayersBar()
         setupUI()
     }
     
@@ -140,6 +149,20 @@ class GameScreenVC: UIViewController {
         }
     }
     
+    private func updatePlayersBar() {
+        let symbols = viewModel.players
+            .compactMap { $0.name.first }
+            .map { String($0) }
+            .joined(separator: " ") //
+        let text = NSMutableAttributedString(string: symbols)
+        let position = viewModel.currentPlayerIndex * 2
+        text.addAttribute(.foregroundColor,
+                         value: UIColor.white,
+                         range: NSRange(location: position, length: 1))
+        
+        playersBar.attributedText = text
+    }
+
     private func setupUI() {
         
         let leftSpacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
@@ -157,6 +180,7 @@ class GameScreenVC: UIViewController {
         view.addSubview(undoButton)
         view.addSubview(smallButtonsStackView)
         view.addSubview(bigButtonsStackView)
+        view.addSubview(playersBar)
         setupTimerUI(timerLabel, timerButton)
         setupConstraints()
     }
@@ -197,7 +221,10 @@ class GameScreenVC: UIViewController {
             bigButtonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 46),
             bigButtonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -46),
             bigButtonsStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.16),
-            bigButtonsStackView.bottomAnchor.constraint(equalTo: smallButtonsStackView.topAnchor, constant: -10)
+            bigButtonsStackView.bottomAnchor.constraint(equalTo: smallButtonsStackView.topAnchor, constant: -10),
+            
+            playersBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            playersBar.bottomAnchor.constraint(equalTo: undoButton.bottomAnchor),
             
         ])
     }
@@ -275,6 +302,14 @@ extension GameScreenVC {
     @objc private func undoButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @objc private func resultsButtonTapped() {
+        let resultsVC = ResultsViewController()
+        self.navigationController?.pushViewController(resultsVC, animated: true)
+    }
+    
+    
+    
 }
 
 extension GameScreenVC: UICollectionViewDelegateFlowLayout {
@@ -314,6 +349,7 @@ extension GameScreenVC: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == playersCollectionView {
             findCurrentCell()
+            updatePlayersBar()
         }
     }
     
@@ -321,7 +357,6 @@ extension GameScreenVC: UICollectionViewDelegate {
         let centerX = playersCollectionView.contentOffset.x + playersCollectionView.frame.width / 2
         let centerPoint = CGPoint(x: centerX, y: playersCollectionView.frame.height / 2)
         if let indexPath = playersCollectionView.indexPathForItem(at: centerPoint) {
-            print("🎯 Текущий игрок: \(indexPath.row)")
             viewModel.currentPlayerIndex = indexPath.row
         }
     }
@@ -331,8 +366,8 @@ extension GameScreenVC: UICollectionViewDelegate {
         
         playersCollectionView.scrollToItem(
             at: indexPath,
-            at: .centeredHorizontally,  // Позиция на экране
-            animated: true               // С анимацией или без
+            at: .centeredHorizontally,
+            animated: true
         )
     }
     
@@ -343,10 +378,10 @@ extension GameScreenVC: UICollectionViewDelegate {
         }
     }
     
-    @objc private func scrollToPreviousPlayer() {
+    @objc private func scrollToFirstPlayer() {
         let currentInd = viewModel.currentPlayerIndex
         if currentInd > 0 {
-        scrollToPlayer(at: currentInd - 1)
+        scrollToPlayer(at: 0)
         }
     }
 }
@@ -354,9 +389,7 @@ extension GameScreenVC: UICollectionViewDelegate {
 extension GameScreenVC {
     @objc private func changeScoreButtonTapped(_ sender: UIButton) {
         let value = sender.tag
-        let currentPlayer = viewModel.players[viewModel.currentPlayerIndex]
-        let newScore = currentPlayer.score + value
-        viewModel.updateScore(currentPlayer, newScore)
+        viewModel.makeRoll(value)
         playersCollectionView.reloadData()
     }
 }

@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(Roll)
-public class Roll: NSManagedObject {
+@objc(RollCdModel)
+public class RollCdModel: NSManagedObject {
 
 }
 

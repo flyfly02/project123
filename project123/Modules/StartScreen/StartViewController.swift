@@ -10,7 +10,6 @@ import CoreData
 import Combine
 
 class StartViewController: UIViewController {
-    
     private var tableHeightConstraint: NSLayoutConstraint!
     private let viewModel = Assembly.shared.createStartVcViewModel()
     private var cancellables = Set<AnyCancellable>()
@@ -54,8 +53,6 @@ class StartViewController: UIViewController {
         return button
     }()
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .appMainBlack
@@ -66,7 +63,6 @@ class StartViewController: UIViewController {
         setupBindings()
         viewModel.fetchPlayer()
         updateTableHeight()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,7 +98,6 @@ extension StartViewController {
             table.topAnchor.constraint(equalTo: titletext.bottomAnchor, constant: 50),
             table.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             table.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-
         ])
         tableHeightConstraint = table.heightAnchor.constraint(equalToConstant: 0)
         tableHeightConstraint.isActive = true
@@ -114,14 +109,10 @@ extension StartViewController {
             let tableTop = self.table.frame.origin.y
             let buttonTop = self.startGameButton.frame.origin.y
             let availableHeight = buttonTop - tableTop - 100
-            
             let contentHeight = self.table.contentSize.height
-            
             let newHeight = min(contentHeight, availableHeight)
-            
             let minHeight: CGFloat = 44
             let finalHeight = max(newHeight, minHeight)
-            
             UIView.animate(withDuration: 0.3) {
                 self.tableHeightConstraint.constant = finalHeight
                 self.view.layoutIfNeeded()
@@ -133,7 +124,6 @@ extension StartViewController {
 extension StartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.players.count + 1
-        
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -142,14 +132,12 @@ extension StartViewController: UITableViewDataSource {
         cell.configure(isAddCell)
         cell.onTableButtonTapped = { [weak self] in
                guard let self = self else { return }
-            
                if isAddCell {
                    self.newPlayer()
                } else {
                    self.deletePlayer(at: indexPath.row)
                }
            }
-        
 
         if !isAddCell && indexPath.row < viewModel.players.count {
             cell.cellName.text = viewModel.players[indexPath.row].name
@@ -157,7 +145,6 @@ extension StartViewController: UITableViewDataSource {
         
         cell.backgroundColor = .appBackBlack
         cell.contentView.backgroundColor = .appBackBlack
-        
         return cell
     }
 

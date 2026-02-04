@@ -10,18 +10,18 @@ import Foundation
 import CoreData
 
 
-extension Roll {
+extension RollCdModel {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Roll> {
-        return NSFetchRequest<Roll>(entityName: "Roll")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<RollCdModel> {
+        return NSFetchRequest<RollCdModel>(entityName: "RollCdModel")
     }
 
-    @NSManaged public var id: UUID?
+    @NSManaged public var id: String!
     @NSManaged public var value: Int
-    @NSManaged public var player: Roll?
+    @NSManaged public var player: PlayerCDModel?
 
 }
 
-extension Roll : Identifiable {
+extension RollCdModel : Identifiable {
 
 }

@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class CDManager: PlayerDataSource {
+class CDManager: PlayerDataSource, RollDataSource {
     let context: NSManagedObjectContext
     init(_ context: NSManagedObjectContext) {
         self.context = context
@@ -60,4 +60,39 @@ class CDManager: PlayerDataSource {
             }
         return player
     }
+    
+    func fetchRolls() -> [RollModel] {
+        
+        let request = RollCdModel.fetchRequest()
+        request.relationshipKeyPathsForPrefetching = ["player"]
+        request.returnsObjectsAsFaults = false
+    
+        do {
+            let cdRolls = try context.fetch(request)
+            print(cdRolls)
+            return cdRolls.map { cdRoll in
+                RollMapper.toDomainModel(cdRoll)
+            }
+        } catch {
+            print("Error fetching rolls: \(error)")
+            return []
+        }
+    }
+        
+    func makeRoll(roll: RollModel) -> RollModel {
+
+        let playerRequest = PlayerCDModel.fetchRequest()
+        playerRequest.predicate = NSPredicate(format: "name == %@", roll.playerName)
+        
+        var cdPlayer: PlayerCDModel?
+        
+        if let players = try? context.fetch(playerRequest),
+           let player = players.first {
+            cdPlayer = player
+        }
+        _ = RollMapper.toCDModel(roll, context, player: cdPlayer)
+        try? context.save()
+        return roll
+    }
+    
 }

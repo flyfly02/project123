@@ -19,7 +19,7 @@ extension PlayerCDModel {
     @NSManaged public var id: String!
     @NSManaged public var name: String!
     @NSManaged public var score: Int
-    @NSManaged public var roll: PlayerCDModel?
+    @NSManaged public var roll: RollCdModel?
 
 }
 

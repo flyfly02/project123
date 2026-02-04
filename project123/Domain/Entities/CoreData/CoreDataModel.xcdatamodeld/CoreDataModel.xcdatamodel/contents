@@ -4,15 +4,15 @@
         <attribute name="id" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="score" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="roll" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PlayerCDModel" inverseName="roll" inverseEntity="PlayerCDModel"/>
+        <relationship name="roll" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="RollCdModel"/>
     </entity>
-    <entity name="Roll" representedClassName="Roll" syncable="YES">
+    <entity name="RollCdModel" representedClassName="RollCdModel" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="value" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Roll" inverseName="player" inverseEntity="Roll"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlayerCDModel"/>
     </entity>
     <elements>
         <element name="PlayerCDModel" positionX="-63" positionY="-18" width="128" height="89"/>
-        <element name="Roll" positionX="-54" positionY="-9" width="128" height="74"/>
+        <element name="RollCdModel" positionX="-54" positionY="-9" width="128" height="74"/>
     </elements>
 </model>
