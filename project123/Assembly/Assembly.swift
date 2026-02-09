@@ -38,7 +38,9 @@ class Assembly {
         let fetchAllPlayersUseCase = FetchAllPlayersUseCaseImpl(repo: fetchAllPlayersRepo)
         let updatePlayerScoreUseCase = UpdatePlayerScoreUseCaseImpl(repo: fetchAllPlayersRepo)
         let makeRollUseCase = MakeRollUseCaseImpl(fetchRepo: makeRollRepo, updatePalyerRepo: fetchAllPlayersRepo)
-        return GameScreenViewModel(fetchAllPlayerUseCase: fetchAllPlayersUseCase, updateScoreUseCase: updatePlayerScoreUseCase, makeRollUseCase: makeRollUseCase)
+        let cancelRollUseCase = CancelRollUseCaseImpl(repo: makeRollRepo)
+        let fetchAllRollsUseCase = FetchAllRollsUseCaseImpl(makeRollRepo)
+        return GameScreenViewModel(fetchAllPlayerUseCase: fetchAllPlayersUseCase, updateScoreUseCase: updatePlayerScoreUseCase, makeRollUseCase: makeRollUseCase, cancelRollUseCase: cancelRollUseCase, fetchRollsUseCase: fetchAllRollsUseCase)
     }
     
     func createResultsVcViewModel() -> ResultsVcViewModel {

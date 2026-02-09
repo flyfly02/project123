@@ -13,9 +13,9 @@ class ResultsVcViewModel{
     @Published var rolls: [RollModel] = []
     
     private let fetchAllPlayersUseCase: FetchAllPlayersUseCase
-    private let fetchAllRollsUSeCase: FechAllRollsUseCase
+    private let fetchAllRollsUSeCase: FetchAllRollsUseCase
 
-    init(fetchAllPlayerUseCase: FetchAllPlayersUseCase, fetchAllRollsUSeCase: FechAllRollsUseCase ) {
+    init(fetchAllPlayerUseCase: FetchAllPlayersUseCase, fetchAllRollsUSeCase: FetchAllRollsUseCase ) {
         self.fetchAllPlayersUseCase = fetchAllPlayerUseCase
         self.fetchAllRollsUSeCase = fetchAllRollsUSeCase
     }

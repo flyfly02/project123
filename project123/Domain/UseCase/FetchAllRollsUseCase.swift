@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol FechAllRollsUseCase {
+protocol FetchAllRollsUseCase {
     func execute() -> [RollModel]
 }
 
-final class FetchAllRollsUseCaseImpl: FechAllRollsUseCase {
+final class FetchAllRollsUseCaseImpl: FetchAllRollsUseCase {
     let fetchRepo: FetchAllRollsRepo
     init(_ repo: FetchAllRollsRepo) {
         self.fetchRepo = repo

@@ -7,7 +7,8 @@
 
 import Foundation
 
-final class RollRepoImpl: FetchAllRollsRepo, MakeRollRepo {
+final class RollRepoImpl: FetchAllRollsRepo, MakeRollRepo, CancelRollRepo {
+    
     private let dataSource: RollDataSource
     init(dataSource: RollDataSource) {
         self.dataSource = dataSource
@@ -18,5 +19,9 @@ final class RollRepoImpl: FetchAllRollsRepo, MakeRollRepo {
     
     func makeRoll(roll: RollModel) -> RollModel {
         dataSource.makeRoll(roll: roll)
+    }
+    
+    func cancelRoll(playerId: String, oldScore: Int, rollValue: Int) -> Bool {
+        dataSource.deleteLastRollForPlayer(playerId: playerId, rollValue: rollValue)
     }
 }

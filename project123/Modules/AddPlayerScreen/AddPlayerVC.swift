@@ -49,6 +49,11 @@ class AddPlayerVC: UIViewController {
            
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+            addPlayerTextField.becomeFirstResponder()
+        }
+    
     private func setupUi() {
         view.backgroundColor = .appMainBlack
         view.addSubview(titletext)

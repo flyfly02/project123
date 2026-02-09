@@ -10,4 +10,5 @@ import Foundation
 protocol RollDataSource {
     func fetchRolls() -> [RollModel]
     func makeRoll(roll: RollModel) -> RollModel
+    func deleteLastRollForPlayer(playerId: String, rollValue: Int) -> Bool
 }

@@ -16,6 +16,9 @@ struct RollMapper {
         cdRoll.id = roll.id
         cdRoll.value = roll.value
         cdRoll.player = player
+        if let player = player {
+                    cdRoll.player = player  
+                }
         
         return cdRoll
     }

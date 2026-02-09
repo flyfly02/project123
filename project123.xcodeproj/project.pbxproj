@@ -19,6 +19,9 @@
 		907CAFED2F1F5BF50071FD55 /* CreatePlayerRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFEC2F1F5BF50071FD55 /* CreatePlayerRepo.swift */; };
 		907CAFEF2F1F5C740071FD55 /* CreatePlayerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CAFEE2F1F5C740071FD55 /* CreatePlayerUseCase.swift */; };
 		907D5B502F0A3E1100ABBFAC /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 907D5B4F2F0A3E1100ABBFAC /* Nunito-SemiBold.ttf */; };
+		908AA5AD2F3A19FE00380363 /* CancelRollUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908AA5AC2F3A19FE00380363 /* CancelRollUseCase.swift */; };
+		908AA5AF2F3A1A1D00380363 /* CancelRollRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908AA5AE2F3A1A1D00380363 /* CancelRollRepo.swift */; };
+		908AA5B12F3A1C3D00380363 /* CancelRollRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908AA5B02F3A1C3D00380363 /* CancelRollRepoImpl.swift */; };
 		908EB9392F20EA3E001B2D69 /* FetchPlayerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908EB9382F20EA3E001B2D69 /* FetchPlayerUseCase.swift */; };
 		908EB93B2F20EABD001B2D69 /* FetchAllPlayersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908EB93A2F20EABD001B2D69 /* FetchAllPlayersUseCase.swift */; };
 		908EB93D2F20EB20001B2D69 /* DeletePlayerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908EB93C2F20EB20001B2D69 /* DeletePlayerUseCase.swift */; };
@@ -73,6 +76,9 @@
 		907CAFEC2F1F5BF50071FD55 /* CreatePlayerRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerRepo.swift; sourceTree = "<group>"; };
 		907CAFEE2F1F5C740071FD55 /* CreatePlayerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerUseCase.swift; sourceTree = "<group>"; };
 		907D5B4F2F0A3E1100ABBFAC /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		908AA5AC2F3A19FE00380363 /* CancelRollUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelRollUseCase.swift; sourceTree = "<group>"; };
+		908AA5AE2F3A1A1D00380363 /* CancelRollRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelRollRepo.swift; sourceTree = "<group>"; };
+		908AA5B02F3A1C3D00380363 /* CancelRollRepoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelRollRepoImpl.swift; sourceTree = "<group>"; };
 		908EB9382F20EA3E001B2D69 /* FetchPlayerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPlayerUseCase.swift; sourceTree = "<group>"; };
 		908EB93A2F20EABD001B2D69 /* FetchAllPlayersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllPlayersUseCase.swift; sourceTree = "<group>"; };
 		908EB93C2F20EB20001B2D69 /* DeletePlayerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePlayerUseCase.swift; sourceTree = "<group>"; };
@@ -200,6 +206,7 @@
 				907A4BA72F27DDC100F3046C /* UpdatePlayerRepo.swift */,
 				90B493592F33819E007DC766 /* MakeRollRepo.swift */,
 				90B4935D2F338358007DC766 /* FetchAlllRollsRepo.swift */,
+				908AA5AE2F3A1A1D00380363 /* CancelRollRepo.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -214,6 +221,7 @@
 				907A4BA52F27D44200F3046C /* UpdatePlayerScoreUseCase.swift */,
 				90B493572F3380FE007DC766 /* MakeRollUseCase.swift */,
 				90B4935B2F338329007DC766 /* FetchAllRollsUseCase.swift */,
+				908AA5AC2F3A19FE00380363 /* CancelRollUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -293,6 +301,7 @@
 			children = (
 				908EB94B2F20FC69001B2D69 /* PlayerRepoImpl.swift */,
 				90B4935F2F338AE0007DC766 /* RollRepoImpl.swift */,
+				908AA5B02F3A1C3D00380363 /* CancelRollRepoImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -485,6 +494,7 @@
 				9090393C2F0951C200388B42 /* Colors.swift in Sources */,
 				909039282F09379600388B42 /* StartViewController.swift in Sources */,
 				901EAE032F32514E00C415B4 /* ResultsViewController.swift in Sources */,
+				908AA5AF2F3A1A1D00380363 /* CancelRollRepo.swift in Sources */,
 				907A4BA62F27D44200F3046C /* UpdatePlayerScoreUseCase.swift in Sources */,
 				907CAFE62F1F48150071FD55 /* RollModel.swift in Sources */,
 				90B4935C2F338329007DC766 /* FetchAllRollsUseCase.swift in Sources */,
@@ -499,6 +509,7 @@
 				90B493662F33BC01007DC766 /* RollTableViewCell.swift in Sources */,
 				90B493562F3362D9007DC766 /* ResultsVcViewModel.swift in Sources */,
 				907CAFE42F1F47040071FD55 /* PlayerModel.swift in Sources */,
+				908AA5B12F3A1C3D00380363 /* CancelRollRepoImpl.swift in Sources */,
 				908EB93F2F20EE40001B2D69 /* FetchPlayerRepo.swift in Sources */,
 				909039242F09379600388B42 /* AppDelegate.swift in Sources */,
 				907A4BA42F27C52400F3046C /* GameScreenViewModel.swift in Sources */,
@@ -508,6 +519,7 @@
 				908EB93B2F20EABD001B2D69 /* FetchAllPlayersUseCase.swift in Sources */,
 				90FFF2E82F2283E8002801BB /* AddPlayerViewModel.swift in Sources */,
 				90990C9C2F22724D002AF60A /* StartVcViewModel.swift in Sources */,
+				908AA5AD2F3A19FE00380363 /* CancelRollUseCase.swift in Sources */,
 				90AFFD752F110C0F00CE09FC /* AppButtonFactory.swift in Sources */,
 				90A8A2102F155B3800026A80 /* PlayerCollectionCell.swift in Sources */,
 				90B493622F338B31007DC766 /* RollDataSource.swift in Sources */,

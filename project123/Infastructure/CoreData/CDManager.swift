@@ -41,12 +41,24 @@ class CDManager: PlayerDataSource, RollDataSource {
     
     func deletePlayer(_ id: String) {
         let request = PlayerCDModel.fetchRequest()
-        if let players = try? context.fetch(request), let player = players.first(where: {$0.id == id}) {
+        if let players = try? context.fetch(request),
+           let player = players.first(where: {$0.id == id}) {
+            
+            // Удаляем все броски этого игрока
+            let rollRequest = RollCdModel.fetchRequest()
+            rollRequest.predicate = NSPredicate(format: "player == %@", player)
+            
+            if let rolls = try? context.fetch(rollRequest) {
+                for roll in rolls {
+                    context.delete(roll)
+                }
+            }
+            
+            // Удаляем игрока
             context.delete(player)
             try? context.save()
         }
     }
-    
     func updatePlayer(_ player: PlayerModel) -> PlayerModel {
         let request = PlayerCDModel.fetchRequest()
         request.predicate = NSPredicate(format: "id == %@", player.id)
@@ -62,27 +74,28 @@ class CDManager: PlayerDataSource, RollDataSource {
     }
     
     func fetchRolls() -> [RollModel] {
-        
         let request = RollCdModel.fetchRequest()
         request.relationshipKeyPathsForPrefetching = ["player"]
         request.returnsObjectsAsFaults = false
-    
+        
         do {
             let cdRolls = try context.fetch(request)
-            print(cdRolls)
-            return cdRolls.map { cdRoll in
+            
+            // Просто маппим и фильтруем nil
+            return cdRolls.compactMap { cdRoll in
                 RollMapper.toDomainModel(cdRoll)
             }
+            
         } catch {
             print("Error fetching rolls: \(error)")
             return []
         }
     }
-        
+    
     func makeRoll(roll: RollModel) -> RollModel {
-
         let playerRequest = PlayerCDModel.fetchRequest()
         playerRequest.predicate = NSPredicate(format: "name == %@", roll.playerName)
+        playerRequest.returnsObjectsAsFaults = false
         
         var cdPlayer: PlayerCDModel?
         
@@ -90,9 +103,32 @@ class CDManager: PlayerDataSource, RollDataSource {
            let player = players.first {
             cdPlayer = player
         }
+        
         _ = RollMapper.toCDModel(roll, context, player: cdPlayer)
         try? context.save()
         return roll
     }
+    
+    func deleteLastRollForPlayer(playerId: String, rollValue: Int) -> Bool {
+            let request = PlayerCDModel.fetchRequest()
+            request.predicate = NSPredicate(format: "id == %@", playerId)
+            
+            guard let cdPlayer = try? context.fetch(request).first else {
+                return false
+            }
+            
+            let rollRequest = RollCdModel.fetchRequest()
+            rollRequest.predicate = NSPredicate(format: "player == %@ AND value == %d", cdPlayer, rollValue)
+            rollRequest.sortDescriptors = [NSSortDescriptor(key: "value", ascending: false)]
+            rollRequest.fetchLimit = 1
+            
+            if let rolls = try? context.fetch(rollRequest), let lastRoll = rolls.first {
+                context.delete(lastRoll)
+                try? context.save()
+                return true
+            }
+            
+            return false
+        }
     
 }

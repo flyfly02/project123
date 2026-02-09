@@ -193,6 +193,7 @@ extension StartViewController {
     private func newPlayer() {
            let addPlayerVC = AddPlayerVC()
            navigationController?.pushViewController(addPlayerVC, animated: true)
+           
        }
 
     private func deletePlayer(at index: Int) {
@@ -207,10 +208,11 @@ extension StartViewController {
     @objc private func startGameTapped() {
         let newGameVC = GameScreenVC()
         self.navigationController?.pushViewController(newGameVC, animated: true)
+        
     }
     
     private func updateStartGameButtonCondition() {
-        if viewModel.players.isEmpty {
+        if viewModel.players.count < 2 {
             startGameButton.isEnabled = false
         } else {
             startGameButton.isEnabled = true      

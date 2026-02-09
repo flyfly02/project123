@@ -15,7 +15,7 @@ class GameScreenVC: UIViewController {
     private var isGameIsOn: Bool = false
     private var gameTimer: Timer?
     private var timerSeconds: Int = 0
-    private lazy var leftNewGameButton = AppButtonFactory.createBarItem("New Game", nil, nil)
+    private lazy var leftNewGameButton = AppButtonFactory.createBarItem("New Game", self, #selector(newGameButtonTapped))
     private lazy var rightResultsButton = AppButtonFactory.createBarItem("Results", self, #selector(resultsButtonTapped))
     
     
@@ -300,12 +300,28 @@ extension GameScreenVC: UICollectionViewDataSource {
 
 extension GameScreenVC {
     @objc private func undoButtonTapped() {
-        self.navigationController?.popViewController(animated: true)
-    }
+            let success = viewModel.undoLastRoll()
+            
+            if success {
+                playersCollectionView.reloadData()
+            } else {
+                print("No roll to cancel")
+            }
+        }
     
     @objc private func resultsButtonTapped() {
         let resultsVC = ResultsViewController()
         self.navigationController?.pushViewController(resultsVC, animated: true)
+    }
+    
+    @objc private func newGameButtonTapped() {
+
+        if let startVC = self.navigationController?.viewControllers.first(where: { $0 is StartViewController }) {
+            self.navigationController?.popToViewController(startVC, animated: true)
+        } else {
+            let startVC = StartViewController()
+            self.navigationController?.setViewControllers([startVC], animated: true)
+        }
     }
     
     
@@ -318,8 +334,7 @@ extension GameScreenVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                        layout collectionViewLayout: UICollectionViewLayout,
                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        // 1. Получаем текущую высоту коллекции
+    
         let collectionHeight = collectionView.frame.height
         
         // 2. Получаем отступы из layout
@@ -338,9 +353,7 @@ extension GameScreenVC: UICollectionViewDelegateFlowLayout {
         
         // 5. Минимальная высота на всякий случай
         let finalHeight = max(cellHeight, 100)
-        
-        print("📏 Высота коллекции: \(collectionHeight), Высота ячейки: \(finalHeight)")
-        
+    
         return CGSize(width: cellWidth, height: finalHeight)
     }
 }
