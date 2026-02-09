@@ -12,11 +12,11 @@ class GameScreenVC: UIViewController {
     
     private let viewModel = Assembly.shared.createGameScreenViewModel()
     private var cancellables = Set<AnyCancellable>()
-    private var isGameIsOn: Bool = false
     private var gameTimer: Timer?
-    private var timerSeconds: Int = 0
     private lazy var leftNewGameButton = AppButtonFactory.createBarItem("New Game", self, #selector(newGameButtonTapped))
     private lazy var rightResultsButton = AppButtonFactory.createBarItem("Results", self, #selector(resultsButtonTapped))
+    private var timerSeconds: Int = 0
+    private var isGameIsOn: Bool = false
     
     
     
@@ -122,8 +122,6 @@ class GameScreenVC: UIViewController {
         nextButton.addTarget(self, action: #selector(scrollToNextPlayer), for: .touchUpInside)
         previousButton.widthAnchor.constraint(equalToConstant: 34).isActive = true
         previousButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        previousButton.widthAnchor.constraint(equalToConstant: 34).isActive = true
-        previousButton.heightAnchor.constraint(equalToConstant: 34).isActive = true
         [previousButton, bigChangeScoreButton, nextButton].forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -131,23 +129,19 @@ class GameScreenVC: UIViewController {
         return stackView
     }()
     
-    
-    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        viewModel.fetchPlayers()
-        updatePlayersBar()
-        setupUI()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if let layout = playersCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.invalidateLayout()
-            playersCollectionView.collectionViewLayout.invalidateLayout()
-            playersCollectionView.layoutIfNeeded()
-        }
-    }
+           super.viewDidLoad()
+           viewModel.fetchPlayers()
+           updatePlayersBar()
+           setupUI()
+           timerSeconds = UserDefaults.standard.integer(forKey: "gameTimerSeconds")
+           updateTimerLabel()
+       }
+       
+       override func viewWillDisappear(_ animated: Bool) {
+           super.viewWillDisappear(animated)
+           UserDefaults.standard.set(timerSeconds, forKey: "gameTimerSeconds")
+       }
     
     private func updatePlayersBar() {
         let symbols = viewModel.players
@@ -181,7 +175,7 @@ class GameScreenVC: UIViewController {
         view.addSubview(smallButtonsStackView)
         view.addSubview(bigButtonsStackView)
         view.addSubview(playersBar)
-        setupTimerUI(timerLabel, timerButton)
+        setupTimerUI()
         setupConstraints()
     }
     
@@ -231,7 +225,7 @@ class GameScreenVC: UIViewController {
 }
 
 extension GameScreenVC {
-    private func setupTimerUI(_ timerLabel: UILabel, _ timerButton: UIButton) {
+    private func setupTimerUI() {
         if isGameIsOn {
             timerLabel.textColor = .white
             timerButton.setImage(UIImage(named: "pauseImage"), for: .normal)
@@ -239,9 +233,6 @@ extension GameScreenVC {
             timerLabel.textColor = .appTimerIsOff
             timerButton.setImage(UIImage(named: "playImage"), for: .normal)
         }
-    }
-    private func setupTimerLogic() {
-        
     }
     
     @objc private func timerButtonTapped() {
@@ -252,8 +243,7 @@ extension GameScreenVC {
         }
         
         isGameIsOn.toggle()
-        setupTimerUI(timerLabel, timerButton)
-        
+        setupTimerUI()
     }
     
     private func startTimer() {
@@ -264,7 +254,7 @@ extension GameScreenVC {
                                          userInfo: nil,
                                          repeats: true)
         if let timer = gameTimer {
-                    RunLoop.current.add(timer, forMode: .common)
+            RunLoop.current.add(timer, forMode: .common)
         }
     }
     
@@ -274,17 +264,32 @@ extension GameScreenVC {
     }
     
     private func updateTimerLabel() {
-           let minutes = timerSeconds / 60
-           let seconds = timerSeconds % 60
-           timerLabel.text = String(format: "%02d:%02d", minutes, seconds)
+        let minutes = timerSeconds / 60
+        let seconds = timerSeconds % 60
+        timerLabel.text = String(format: "%02d:%02d", minutes, seconds)
     }
     
     private func stopGameTimer() {
-            gameTimer?.invalidate()
+        gameTimer?.invalidate()
+        gameTimer = nil
     }
-
+    
+    @objc private func newGameButtonTapped() {
+            stopGameTimer()
+            timerSeconds = 0
+            isGameIsOn = false
+            updateTimerLabel()
+            setupTimerUI()
+            UserDefaults.standard.set(0, forKey: "gameTimerSeconds")
+            
+            if let startVC = self.navigationController?.viewControllers.first(where: { $0 is StartViewController }) {
+                self.navigationController?.popToViewController(startVC, animated: true)
+            } else {
+                let startVC = StartViewController()
+                self.navigationController?.setViewControllers([startVC], animated: true)
+            }
+        }
 }
-
 extension GameScreenVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.players.count
@@ -313,19 +318,6 @@ extension GameScreenVC {
         let resultsVC = ResultsViewController()
         self.navigationController?.pushViewController(resultsVC, animated: true)
     }
-    
-    @objc private func newGameButtonTapped() {
-
-        if let startVC = self.navigationController?.viewControllers.first(where: { $0 is StartViewController }) {
-            self.navigationController?.popToViewController(startVC, animated: true)
-        } else {
-            let startVC = StartViewController()
-            self.navigationController?.setViewControllers([startVC], animated: true)
-        }
-    }
-    
-    
-    
 }
 
 extension GameScreenVC: UICollectionViewDelegateFlowLayout {
